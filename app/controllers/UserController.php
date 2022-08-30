@@ -31,8 +31,11 @@
                 else{
                     if($data->password == $password){
                         $_SESSION['email'] = $data->email;
-                    $_SESSION['id'] = $data->id; 
-                    $_SESSION['role'] = $data->role;
+                        $_SESSION['id'] = $data->id; 
+                        $_SESSION['role'] = $data->role;
+                        $_SESSION['nom'] = $data->nom;
+                        $_SESSION['prenom'] = $data->prenom;
+                        $_SESSION['fk-zone'] = $data->fk_zone;
 
                     if($_SESSION['role'] == "senior"){
                         redirect('pages/senior');
@@ -53,42 +56,20 @@
             }
         }
 
-        public function addAdmin(){
-
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $dataAdmin =  $_POST;
-                $this->AdminModel->addAdmin($dataAdmin);
-                redirect('pages/admins');
-            }
-            else{
-                $this->view('pages/admins');
-            }
-
-        }
-
-        public function updateAdmin($id){
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $dataAdmin =  $_POST;
-                $this->AdminModel->updateAdmin($dataAdmin,$id);
-                redirect("pages/admins");
-            }
-            else{
-                redirect("pages/admins");
-            } 
-        }
-
-        public function deleteAdmin($id){
-            $this->AdminModel->delete($id);
-            redirect('pages/admins');
-        }
-
         public function Logout(){
             session_unset();
-            echo $_SESSION['username'];
-            redirect('pages/loginAdmin');
+            redirect('pages/index');
         }
 
-        
+        public function badge(){
+            $code = $_POST['code'];
+            $dateTime =  date("Y-m-d H:i:s");
+            $dateTime = explode(" ", $dateTime);
+            $date = $dateTime[0];
+            $time = $dateTime[1];
+            $this->UserModel->badge($code,$date,$time);
+        }
+
     }
 
 ?>
