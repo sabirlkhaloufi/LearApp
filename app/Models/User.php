@@ -9,35 +9,6 @@ class User
 }
 
 
-public function GetLastTech(){
-    $this->db->query("SELECT * FROM techniciens ORDER BY Id_tech DESC LIMIT 3");
-    return $this->db->resultSet();
-}
-
-public function addFeedBack($idTech,$starts){
-    $this->db->query("INSERT INTO feedback (fk_tech,Nstart) VALUES (:fk_tech,:Nstart)");
-    $this->db->bind(':fk_tech',$idTech);
-    $this->db->bind(':Nstart',$starts);
-    $this->db->execute();
-}
-
-
-public function getAllTech(){
-    $this->db->query("SELECT * FROM techniciens;");
-   return $this->db->resultSet();
-}
-
-public function countTech(){
-    $this->db->query("SELECT * FROM techniciens;");
-    $this->db->execute();
-    return $this->db->rowCount();
-}
-
-public function getTechTopFeedback(){
-    $this->db->query("SELECT * FROM techniciens ORDER BY feedback DESC LIMIT 3");
-    return $this->db->resultSet();
-}
-
 
 public function Login($email,$password){
     $this->db->query("SELECT * FROM seniors WHERE email = '$email'");
@@ -56,6 +27,15 @@ public function Login($email,$password){
         return $teamleader;
     }
 
+}
+
+
+public function badge($code,$date,$time){
+    $this->db->query("UPDATE `operateurs` SET date=:date, time = :time WHERE code = :code");
+    $this->db->bind(':date' ,$date);
+    $this->db->bind(':time' ,$time);
+    $this->db->bind(':code' ,$code);
+    $this->db->execute();
 }
 
 
@@ -78,15 +58,6 @@ public function update($data,$id,$imgName,$Fk_cat){
 
 
 
-public function delete($idTech){
-    $this->db->query('DELETE FROM `techniciens` WHERE Id_tech = '.$idTech);
-    $this->db->execute();
-}
 
-
-public function search($city,$id_cat){
-    $this->db->query("SELECT * FROM techniciens WHERE ville = '$city' AND Fk_cat = $id_cat");
-    return $this->db->resultSet();
-}
 
 }
