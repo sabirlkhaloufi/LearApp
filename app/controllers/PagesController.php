@@ -18,11 +18,11 @@
     }
 
     public function senior(){
-      if(!isset($_SESSION['id'])){
+      if(!isset($_SESSION['idSenior'])){
         redirect('pages/index');
       }
 
-      $team = $this->SeniorModel->getAllTeamLeader();
+      $team = $this->SeniorModel->getTeamLeader($_SESSION['idSenior']);
       $data = [
         ["title" =>"senior"],
         ["team" => $team]
@@ -46,7 +46,6 @@
       $this->view('pages/teamLeader', $data);
 
     }
-
 
     public function badge(){
       $data = [

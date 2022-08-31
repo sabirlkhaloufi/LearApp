@@ -1,0 +1,39 @@
+body{
+    overflow: hidden;
+}
+
+.login{
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.btn-danger{
+background-color: #FF0020 !important;
+}
+
+main{
+    background-color: rgba(0, 0, 0, 0.6) !important;
+}
+.vd{
+    z-index: -1;
+     width: 100%;
+}
+.card{
+    background-color: rgba(255, 255, 255, 0.8) !important;
+}
+h3{
+    color:white;
+}
+ul{
+    list-style: none;
+}
+li{
+    border-radius:5px;
+}
+.border-success{
+    background-color: rgba(0, 128, 0, 0.5);
+}
+
+.border-danger{
+    background-color: rgba(255, 0, 0, 0.5);
+    /* background-color: rgba(172, 255, 47, 0.5); */
+}

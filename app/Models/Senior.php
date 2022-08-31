@@ -10,8 +10,8 @@ class Senior
 
 
 
-public function getTeamLeader(){
-    $this->db->query("SELECT * FROM teamleaders WHERE fk_senior = ;");
+public function getTeamLeader($idSenior){
+    $this->db->query("SELECT * FROM teamleaders WHERE fk_senior = $idSenior;");
     return $this->db->resultSet();
 }
 
