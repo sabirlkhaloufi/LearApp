@@ -1,9 +1,28 @@
+
+/* scroll bars */
+::-webkit-scrollbar{
+    background-color:var(--white);
+    width: 8px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background: #FF0020;
+    border-radius: 3px;
+}
+/* scroll bars */
 body{
-    overflow: hidden;
+    overflow-x: hidden;
+    background-size: 100% 100% !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat;
+}
+
+header{
+    z-index: 1;
 }
 
 .login{
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.6) !important;
 }
 
 .btn-danger{
@@ -12,6 +31,7 @@ background-color: #FF0020 !important;
 
 main{
     background-color: rgba(0, 0, 0, 0.6) !important;
+    height: 100%;
 }
 .vd{
     z-index: -1;
@@ -37,3 +57,15 @@ li{
     background-color: rgba(255, 0, 0, 0.5);
     /* background-color: rgba(172, 255, 47, 0.5); */
 }
+
+main{
+    height: 100vh !important;
+}
+
+
+@media (min-width: 600px) {  
+    main{
+        height: 100% !important;
+    }
+  }
+
