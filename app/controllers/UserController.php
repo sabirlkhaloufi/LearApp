@@ -1,9 +1,5 @@
 <?php
     class UserController extends Controller{
-        private $username;
-        private $phone;
-        private $email;
-        private $password;
         
         public function __construct()
         {

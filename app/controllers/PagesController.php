@@ -55,4 +55,14 @@
       $this->view('pages/badge', $data);
     }
 
+    public function updateTime(){
+    $zone = $this->TeamL->getZone($_SESSION['id']);
+      $data = [
+        ["title" =>"updateTime"],
+        ["zones" => $zone]
+      ];
+      
+      $this->view('pages/updateTime', $data);
+    }
+
 }

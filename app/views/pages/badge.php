@@ -1,18 +1,16 @@
 <?php include_once APPROOT . '/views/inc/head.php'; ?>
 
-<body class="">
+<body class="" style="background-image:url('<?php echo URLROOT ?>/images/Automotive_Kroschu-fc7f0c2f.jpg');">
 
-    <main class="container vh-100 d-flex flex-column justify-content-center align-items-center">
+    <main class="d-flex flex-column justify-content-center align-items-center">
 
-    <h2>welcome</h2>
+    <h2>Badge</h2>
     
     <form action="<?php echo URLROOT ?>/UserController/badge" method="POST">
-  <div class="mb-3">
-    <input type="text" class="form-control w-100" id="exampleInputEmail1" aria-describedby="emailHelp" name="code">
-  </div>
-
-  <button type="submit" class="btn btn-primary w-100">Submit</button>
+    <div class="mb-3"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Entrer votre code" name="code"></div>
+                                       <button class="btn btn-danger d-block btn-user w-100" type="submit">badge</button>
 </form>
     </main>
 </div>
+
     <?php include_once APPROOT . '/views/inc/linkJS.php'; ?>
