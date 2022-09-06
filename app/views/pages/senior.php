@@ -46,20 +46,20 @@
                         if($team->time > '09:00:00'){ 
                              ?>
 
-                            <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn border btn-danger py-2 px-3 text-white"><?php echo $team->nom ?></a>
+                            <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-warning py-2 px-3 text-white"><?php echo $team->nom ?></a>
 
                         <?php 
                         }else{
                              ?>
 
-                            <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn border border-success py-2 px-3 text-white"><?php echo $team->nom ?></a>
+                            <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-success py-2 px-3 text-white"><?php echo $team->nom ?></a>
                         <?php
                      }; 
                      ?>
 
 
                         <?php }else{?>
-                        <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn border border-danger py-2 px-3 text-white"><?php echo $team->nom ?></a>
+                        <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-danger py-2 px-3 text-white"><?php echo $team->nom ?></a>
                 
 
                     

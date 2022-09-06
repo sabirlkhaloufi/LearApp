@@ -21,7 +21,7 @@
         </div>
     </header>
 
-    <main class="vw-100">
+    <main class="vw-100 vh-100">
     <h3 class="text-center pt-4">TeamLeader: <?php echo $data[1]['nom']->nom." ".$data[1]['nom']->prenom ?></h3>
     <div class="d-flex gap-2 flex-wrap mt-5 justify-content-center align-items-center">
 
@@ -43,15 +43,15 @@
                     if($team->date == $date){
 
                         if($team->time > $zone->time){
-                            echo '<li class="btn btn-danger py-2 px-3 text-white">'. $team->nom .'</li>';
+                            echo '<li class="btn btn-warning py-2 px-3 text-white">'. $team->nom .'</li>';
                         }
                         else{
-                            echo '<li class="border border-success py-2 px-3 text-white">'. $team->nom .'</li>';
+                            echo '<li class="btn btn-success py-2 px-3 text-white">'. $team->nom .'</li>';
                         }
                         
                     }
                     else{
-                        echo '<li class="border border-danger py-2 px-3 text-white">'. $team->nom .'</li>';
+                        echo '<li class="btn btn-danger py-2 px-3 text-white">'. $team->nom .'</li>';
                     }    
                 }
                  ?>

@@ -63,7 +63,7 @@ main{
 }
 
 
-@media (min-width: 600px) {  
+@media (max-width: 600px) {  
     main{
         height: 100% !important;
     }
