@@ -1,7 +1,8 @@
 <?php include_once APPROOT . '/views/inc/head.php'; ?>
 
 <body class="" style="background-image:url('<?php echo URLROOT ?>/images/Automotive_Kroschu-fc7f0c2f.jpg');">
-<header class="shadow-sm bg-body position-sticky top-0">
+
+    <header class="shadow-sm bg-body position-sticky top-0 w-100">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="logo">
                 <a href=""><img src="<?php echo URLROOT ?>/public/images/logo.png" alt="" width="150"></a>
@@ -17,6 +18,8 @@
                     <li><a class="dropdown-item" href="<?php echo URLROOT ?>/UserController/logout">Logout</a></li>
                 </ul>
             </div>
+            <a href="<?php echo URLROOT ?>/pages/updateTime" class="btn btn-primary">Update Time</a>
+            <!-- <a href="<?php echo URLROOT ?>/UserController/logout" class="btn btn-danger">Logout</a> -->
             </div>
             
         </div>
