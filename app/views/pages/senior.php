@@ -24,7 +24,18 @@
 
     <main class="vw-100">
     <div class="container">
-    <h3 class="text-center pt-4">Senior: <?php echo $_SESSION['nom']." ".$_SESSION['prenom'] ?></h3>
+    <!-- <h3 class="text-center pt-4">Senior: <?php echo $_SESSION['nom']." ".$_SESSION['prenom'] ?></h3> -->
+
+    <div class="d-flex flex-column flex-lg-row justify-content-center gap-5 align-items-center pt-5">
+        <h3 class="text-center">Senior: <?php echo $_SESSION['nom']." ".$_SESSION['prenom'] ?></h3>
+        <div>
+            <span class="btn btn-danger">absence</span>
+            <span class="btn btn-success">present</span>
+            <span class="btn btn-warning">retard
+            </span>
+            <!-- <span class="btn btn-secondary">justify</span> -->
+        </div>
+    </div>
 
 <div>
     

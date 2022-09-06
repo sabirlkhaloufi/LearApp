@@ -23,7 +23,7 @@
         </div>
     </header>
 
-    <main class="h-100 vw-100">
+    <main class=" vw-100">
     <div class="d-flex flex-column flex-lg-row justify-content-center gap-5 align-items-center pt-5">
         <a href="<?php echo URLROOT ?>/pages/teamLeader" class="btn btn-primary">Retour</a>
         <h3 class="text-center">TeamLeader: <?php echo $_SESSION['nom']." ".$_SESSION['prenom'] ?></h3>
