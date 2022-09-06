@@ -17,6 +17,16 @@
 
     }
 
+    // public function index(){
+
+    //   $data = [
+    //     ["title" =>"welcome"]
+    //   ];
+
+    //   $this->view('pages/index', $data);
+
+    // }
+
     public function senior(){
       if(!isset($_SESSION['idSenior'])){
         redirect('pages/index');
