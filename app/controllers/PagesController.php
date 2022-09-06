@@ -7,7 +7,7 @@
       $this->SeniorModel = $this->model('Senior');
     }
     
-    public function index(){
+    public function login(){
 
       $data = [
         ["title" =>"login"]
@@ -17,15 +17,15 @@
 
     }
 
-    // public function index(){
+    public function index(){
 
-    //   $data = [
-    //     ["title" =>"welcome"]
-    //   ];
+      $data = [
+        ["title" =>"welcome"]
+      ];
 
-    //   $this->view('pages/index', $data);
+      $this->view('pages/index', $data);
 
-    // }
+    }
 
     public function senior(){
       if(!isset($_SESSION['idSenior'])){

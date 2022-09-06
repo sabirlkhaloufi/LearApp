@@ -1,4 +1,25 @@
+#welcome{
+    /* background-size: 100% 100%;  */
+    /* display: none !important; */
+    background-image:linear-gradient(to bottom right, black,white) !important;
+}
 
+.wel{
+    z-index: 1 !important;
+}
+
+.wel h1{
+    color: white !important;
+    font-weight: bolder;
+}
+
+.mt-7{
+    margin-top: 10% !important;
+}
+
+.imgWelcome{
+    z-index: -1 !important;
+}
 /* scroll bars */
 ::-webkit-scrollbar{
     background-color:var(--white);
