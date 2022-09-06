@@ -22,7 +22,18 @@
     </header>
 
     <main class="vw-100 vh-100">
-    <h3 class="text-center pt-4">TeamLeader: <?php echo $data[1]['nom']->nom." ".$data[1]['nom']->prenom ?></h3>
+    <!-- <h3 class="text-center pt-4">TeamLeader: <?php echo $data[1]['nom']->nom." ".$data[1]['nom']->prenom ?></h3> -->
+
+    <div class="d-flex flex-column flex-lg-row justify-content-center gap-5 align-items-center pt-5">
+        <h3 class="text-center">TeamLeader: <?php echo $data[1]['nom']->nom." ".$data[1]['nom']->prenom ?></h3>
+        <div>
+            <span class="btn btn-danger">absence</span>
+            <span class="btn btn-success">present</span>
+            <span class="btn btn-warning">retard
+            </span>
+            <!-- <span class="btn btn-secondary">justify</span> -->
+        </div>
+    </div>
     <div class="d-flex gap-2 flex-wrap mt-5 justify-content-center align-items-center">
 
     <?php foreach ($data[1]["zones"] as $zone):?>
