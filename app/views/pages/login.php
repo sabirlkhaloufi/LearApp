@@ -24,7 +24,7 @@
                                         </div>
                                         <hr>
                                     </form>
-                                    <div class="text-center"><a class="small" href="https://www.lear.com/">www.lear.com</a></div>
+                                    <div class="text-center"><a class="small" href="<?php echo URLROOT ?>">Home</a></div>
                                     <!-- <div class="text-center"><a class="small" href="forgot-password.html">Forgot Password?</a></div> -->
                                 </div>
                                
