@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2022 at 11:29 PM
+-- Generation Time: Sep 07, 2022 at 03:15 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -167,16 +167,17 @@ CREATE TABLE `teamleaders` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date` date DEFAULT NULL,
   `time` time NOT NULL,
-  `code` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+  `code` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `timeTeam` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `teamleaders`
 --
 
-INSERT INTO `teamleaders` (`id`, `nom`, `prenom`, `Matricule`, `Equipe`, `fk_senior`, `email`, `password`, `date`, `time`, `code`) VALUES
-(1, 'aicha', 'aicha', 'A1234', '1', 2, 'aicha@gmail.com', 'aicha123', NULL, '00:00:00', 'aicha123'),
-(2, 'sara', 'sara', 'H345', '2', 1, 'sara@gmail.com', 'sara123', '2022-09-02', '16:29:41', 'sara123');
+INSERT INTO `teamleaders` (`id`, `nom`, `prenom`, `Matricule`, `Equipe`, `fk_senior`, `email`, `password`, `date`, `time`, `code`, `timeTeam`) VALUES
+(1, 'aicha', 'aicha', 'A1234', '1', 2, 'aicha@gmail.com', 'aicha123', NULL, '00:00:00', 'aicha123', '00:00:00'),
+(2, 'sara', 'sara', 'H345', '2', 1, 'sara@gmail.com', 'sara123', '2022-09-07', '02:56:35', 'sara123', '02:00:00');
 
 -- --------------------------------------------------------
 
