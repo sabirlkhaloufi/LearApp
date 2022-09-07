@@ -2,10 +2,10 @@
 <body id="welcome"> 
     <div class="container-fluid">
     <header class="mt-4">
-        <div class="logo"><img src="<?php echo URLROOT ?>/images/logow.png" alt="logo de lear" width="200" height="50"></div>
+        <div class="logo animate__animated animate__zoomIn"><img src="<?php echo URLROOT ?>/images/logow.png" alt="logo de lear" width="200" height="50"></div>
     </header>
     <div class="mt-7">
-        <div class="wel">
+        <div class="wel  animate__animated animate__zoomIn">
             <h1 class="">
                     <span></span> <br> EMPLOYEE <br> MANAGEMENT SYSTEM
             </h1>

@@ -25,14 +25,14 @@ public function getOpWithZone(){
 }
 
 public function updateTimeSenior($time,$fkSenior){
-    $this->db->query("UPDATE `teamLeaders` SET time=:time WHERE fk-senior = :fkSenior");
+    $this->db->query("UPDATE `teamLeaders` SET 	timeTeam=:time WHERE fk_senior = :fkSenior");
     $this->db->bind(':time' ,$time);
     $this->db->bind(':fkSenior' ,$fkSenior);
     $this->db->execute();
 }
 
-public function countTeamLeader(){
-    $this->db->query("SELECT * FROM 'teamleaders'");
-    var_dump($this->db->rowCount()) ;  
+public function countTeamLeader($fkSenior){
+    $this->db->query("SELECT * FROM `teamleaders` WHERE fk_senior = $fkSenior");
+    return $this->db->resultSet();
 }
 }

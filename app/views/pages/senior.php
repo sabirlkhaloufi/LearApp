@@ -18,7 +18,7 @@
                     <li><a class="dropdown-item" href="<?php echo URLROOT ?>/UserController/logout">Logout</a></li>
                 </ul>
             </div>
-            <a href="<?php echo URLROOT ?>/pages/updateTime" class="btn btn-primary">Update Time</a>
+            <a href="<?php echo URLROOT ?>/pages/updateTimeSenior" class="btn btn-primary">Update Time</a>
             <!-- <a href="<?php echo URLROOT ?>/UserController/logout" class="btn btn-danger">Logout</a> -->
             </div>
             
@@ -57,7 +57,7 @@
                     <?php  if($team->date == $date){  ?>
                         
                         <?php  
-                        if($team->time > '09:00:00'){ 
+                        if($team->time > $team->timeTeam){ 
                              ?>
 
                             <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-warning py-2 px-3 text-white"><?php echo $team->nom ?></a>

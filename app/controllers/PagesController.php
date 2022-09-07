@@ -75,4 +75,13 @@
       $this->view('pages/updateTime', $data);
     }
 
+
+    public function updateTimeSenior(){
+      $data = [
+        ["title" =>"updateTime"],
+      ];
+      
+      $this->view('pages/updateTimeSenior', $data);  
+    }
+
 }

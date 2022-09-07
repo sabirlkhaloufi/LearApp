@@ -13,11 +13,13 @@
 
         public function updateTimeSenior(){
 
-            $this->SeniorModel->countTeamLeader();
-            // $fkSenior = $_SESSION['idSenior'];
-            // $time = $_POST["time"];
-            // $zone = $this->SeniorModel->updateTimeSenior($time,$fkSenior);
-            // redirect('page/updateTime');
+            $fkSenior = $_SESSION['idSenior'];
+            $time = $_POST["time"];
+            $nbrTeam = $this->SeniorModel->countTeamLeader($_SESSION['idSenior']);
+            foreach ($nbrTeam as $team) {
+                $zone = $this->SeniorModel->updateTimeSenior($time,$fkSenior);
+            }
+            redirect('page/updateTimeSenior');
         }
                 
     }
