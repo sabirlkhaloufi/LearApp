@@ -84,4 +84,33 @@
       $this->view('pages/updateTimeSenior', $data);  
     }
 
-}
+    public function operateurs(){
+      $oper = $this->TeamL->getOpWithZone($_SESSION['id']);
+      $data = [
+        ["title" =>"operateurs"],
+        ["operateurs" => $oper]
+      ];
+      
+      $this->view('pages/operateurs', $data);  
+    }
+
+    public function updateOp($id){
+      echo $id;
+      $data = [
+        ["title" =>"updateOp"]
+      ];
+      
+      $this->view('pages/updateOp', $data); 
+    }
+
+    public function AjouterOp(){
+      $zone = $this->TeamL->getZone($_SESSION['id']);
+      $data = [
+        ["title" =>"AjouterOp"],
+        ["zones" => $zone]
+
+      ];
+      
+      $this->view('pages/AjouterOp', $data); 
+    }
+    }
