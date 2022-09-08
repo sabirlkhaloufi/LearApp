@@ -17,6 +17,7 @@
                 </ul>
             </div>
             <a href="<?php echo URLROOT ?>/pages/updateTime" class="btn btn-primary">Update Time</a>
+            <a class="btn btn-primary" href="<?php echo URLROOT ?>/pages/operateurs">Operateurs</a>
             <!-- <a href="<?php echo URLROOT ?>/UserController/logout" class="btn btn-danger">Logout</a> -->
             </div>
             
@@ -31,6 +32,10 @@
             <span class="btn btn-success">present</span>
             <span class="btn btn-warning">retard
             </span>
+            
+            <div>
+                
+            </div>
             <!-- <span class="btn btn-secondary">justify</span> -->
         </div>
     </div>
