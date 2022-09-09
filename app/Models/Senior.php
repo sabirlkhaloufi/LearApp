@@ -117,4 +117,39 @@ public function getZoneById($id){
         $this->db->query("SELECT * FROM `seniors` WHERE role = '' ");
         return $this->db->resultSet();  
     }
+
+    public function AjouterSenior($data){
+        $email = $data["email"];
+        $nom = $data["nom"];
+        $prenom = $data["prenom"];
+        $Equipe = $data["Equipe"];
+        $Matricule = $data["Matricule"];
+        $password = $data["password"];
+
+        $this->db->query("INSERT INTO `seniors`(`nom`, `prenom`, `Matricule`, `Equipe`, `email`, `password`) VALUES ('$nom','$prenom','$Matricule','$Equipe','$email','$password')");
+        $this->db->execute();
+    }
+
+    public function deleteSenior($id){
+        $this->db->query("DELETE FROM `seniors` WHERE id = $id");
+        $this->db->execute(); 
+    }
+
+    public function getSeniorById($id){
+        $this->db->query("SELECT * FROM `seniors` WHERE id = $id");
+        return $this->db->single();  
+    }
+
+
+    public function updateSeniorById($data,$id){
+        $email = $data["email"];
+        $nom = $data["nom"];
+        $prenom = $data["prenom"];
+        $Equipe = $data["Equipe"];
+        $Matricule = $data["Matricule"];
+        $password = $data["password"];
+    
+        $this->db->query("UPDATE `seniors` SET `email`='$email',`nom`='$nom',`prenom`='$prenom',`Matricule`='$Matricule',`Equipe`='$Equipe',`password`='$password' WHERE id = $id");
+        $this->db->execute();
+    }
 }
