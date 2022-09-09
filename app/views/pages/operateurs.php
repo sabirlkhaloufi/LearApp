@@ -27,7 +27,7 @@
 
     <main class="vw-100 vh-100">
         <div class="pt-4 d-flex justify-content-between px-5">
-        <a href="<?php echo URLROOT ?>/pages/teamLeader" class="btn btn-primary ">Imprimer</a>
+        <button id="export_button" class="btn btn-primary ">Imprimer</button>
         <a href="<?php echo URLROOT ?>/pages/AjouterOp" class="btn btn-primary ">Ajouter</a>
         </div>
 
@@ -39,7 +39,7 @@
             ?>
     
     <div class="table-responsive container-fluid pt-5">
-            <table class="table bg-white">
+            <table class="table bg-white" id="data">
                 <thead class="bg-table text-dark">
                     <tr>
                         <!-- <th>id</th> -->
@@ -48,7 +48,7 @@
                         <th>Poste</th>
                         <th>Matricule</th>
                         <th>status</th>
-                        <th>Action</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

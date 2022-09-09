@@ -26,7 +26,7 @@
     <main class="vw-100 vh-100">
         <div class="pt-4 d-flex justify-content-between px-5">
         <a href="<?php echo URLROOT ?>/pages/senior" class="btn btn-primary ">Retour</a>
-        <a href="<?php echo URLROOT ?>/pages/AjouterTeam" class="btn btn-primary ">Ajouter</a>
+        <a href="<?php echo URLROOT ?>/pages/AjouterSenior" class="btn btn-primary ">Ajouter</a>
         </div>
 
     
@@ -50,8 +50,8 @@
                         <td><?php echo  $team->prenom ?></td>
                         <td><?php echo  $team->Matricule ?></td>
                         <td>
-                        <a href="<?php echo URLROOT ?>/SeniorController/updateTeam/<?php echo $team->id ?>"><i class="fa fa-edit fs-4 text-bleu"></i></a>
-                        <a href="<?php echo URLROOT ?>/SeniorController/deleteTeam/<?php echo $team->id ?>"><i class="fas fa-trash fs-4 text-bleu"></i></a>
+                        <a href="<?php echo URLROOT ?>/SeniorController/updateSenior/<?php echo $team->id ?>"><i class="fa fa-edit fs-4 text-bleu"></i></a>
+                        <a href="<?php echo URLROOT ?>/SeniorController/deleteSenior/<?php echo $team->id ?>"><i class="fas fa-trash fs-4 text-bleu"></i></a>
                         </td>
 
                     </tr>  

@@ -77,6 +77,33 @@
           $this->SeniorModel->UpdateZoneById($_POST,$id);
             redirect("pages/zones");
         }
+
+
+        public function AjouterSenior(){
+          $this->SeniorModel->AjouterSenior($_POST);
+          redirect("pages/admin");
+      }
+
+      public function deleteSenior($id){
+        $this->SeniorModel->deleteSenior($id);
+        redirect("pages/admin");
+      }
+
+
+      public function updateSenior($id){
+        $senior = $this->SeniorModel->getSeniorById($id);
+        $data = [
+          ["title" =>"updateSenior"],
+           ["senior" => $senior]
+        ];
+
+        $this->view('pages/admin/updateSenior', $data); 
+    }
+
+    public function updateSeniorById($id){
+      $this->SeniorModel->updateSeniorById($_POST,$id);
+      redirect("pages/admin");
+    }
                 
     }
 

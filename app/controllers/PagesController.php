@@ -181,4 +181,13 @@
 
       $this->view('pages/admin/admin', $data);  
     }
+
+
+    public function AjouterSenior(){
+      $data = [
+        ["title" =>"AjouterSenior"]
+      ];
+
+      $this->view('pages/admin/AjouterSenior', $data);
+    }
 }
