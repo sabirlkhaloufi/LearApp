@@ -68,6 +68,16 @@
             redirect("pages/operateurs");
           }
 
+          public function addJustification(){
+            $dateTime =  date("Y-m-d H:i:s");
+            $dateTime = explode(" ", $dateTime);
+            $date = $dateTime[0];
+            $time = $dateTime[1];
+
+            $this->TeamL->addJustification($_POST,$date);
+            redirect("pages/addJust");
+          }
+
                 
     }
 

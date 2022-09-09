@@ -28,7 +28,7 @@
 
     <main class=" vw-100">
     <div class="d-flex flex-column flex-lg-row justify-content-center gap-5 align-items-center pt-5">
-        <a href="<?php echo URLROOT ?>/pages/senior" class="btn btn-primary">Retour</a>
+        <a href="<?php echo URLROOT ?>/pages/Senior" class="btn btn-primary">Retour</a>
         <h3 class="text-center">Senior: <?php echo $_SESSION['nom']." ".$_SESSION['prenom'] ?></h3>
     </div>
     <div class="d-flex gap-2 flex-wrap mt-5 justify-content-center align-items-center">
@@ -36,11 +36,17 @@
 
     <div class="card shadow-sm p-3 mb-5 bg-body rounded w-50">
         <div class="card-body ">
-        <form action="<?php echo URLROOT ?>/SeniorController/updateTimeSenior" method="POST">
-            <div class="mb-3 d-flex gap-3">
-            <input class="form-control form-control-user w-100" type="time" id="exampleInputPassword" placeholder="Entrer votre code" name="time">
+        <form action="<?php echo URLROOT ?>/SeniorController/addJustification" method="POST">
+            <div class="mb-3">
+                <select name="id" id="" class="form-control form-control-user w-100">
+                    <?php foreach ($data[1]["TeamLeaders"] as $op): ?>
+                    <option value="<?php echo $op->id ?>"><?php echo $op->Matricule ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <textarea class="form-control form-control-user w-100 mt-2" name="justification" id="" cols="15" rows="4"></textarea>
+            <!-- <input class="form-control form-control-user w-100 mt-2" type="time" id="exampleInputPassword" placeholder="Entrer votre code" name="time"> -->
         </div>
-            <button class="btn btn-danger d-block btn-user w-100" type="submit">add Time</button>
+            <button class="btn btn-danger d-block btn-user w-100" type="submit">add</button>
         </form>
         </div>
     </div>

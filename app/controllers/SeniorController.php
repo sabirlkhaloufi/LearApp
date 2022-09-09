@@ -21,6 +21,43 @@
             }
             redirect('page/updateTimeSenior');
         }
+
+
+        public function AjouterTeam(){
+            $this->SeniorModel->AjouterTeam($_POST,$_SESSION['idSenior']);
+            redirect("pages/teamleaders");
+        }
+
+
+        public function updateTeam($id){
+            $Team = $this->SeniorModel->getTeamById($id);
+            $data = [
+              ["title" =>"updateTeam"],
+               ["Teamleader" => $Team]
+            ];
+            
+            $this->view('pages/updateTeam', $data); 
+          }
+
+          public function UpdateTeamById($id){
+            $this->SeniorModel->UpdateTeamById($_POST,$id);
+            redirect("pages/teamleaders");
+          }
+
+          public function deleteTeam($id){
+            $this->SeniorModel->deleteTeam($id);
+            redirect("pages/teamleaders");
+          }
+
+          public function addJustification(){
+            $dateTime =  date("Y-m-d H:i:s");
+            $dateTime = explode(" ", $dateTime);
+            $date = $dateTime[0];
+            $time = $dateTime[1];
+
+            $this->SeniorModel->addJustification($_POST,$date);
+            redirect("pages/addjustTeam");
+          }
                 
     }
 

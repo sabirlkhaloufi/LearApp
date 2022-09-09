@@ -31,7 +31,7 @@ class TeamLeader
     }
 
     public function getNomTeam($id){
-        $this->db->query("SELECT nom,prenom from teamLeaders WHERE id = $id");
+        $this->db->query("SELECT * from teamLeaders WHERE id = $id");
         return $this->db->single();   
     }
 
@@ -72,6 +72,8 @@ class TeamLeader
     }
 
 
+
+
     public function AjouterOp($data){
         
         $nom = $data["nom"];
@@ -82,6 +84,13 @@ class TeamLeader
         $Matricule = $data["Matricule"];
     
         $this->db->query("INSERT INTO `operateurs`(`nom`, `prenom`, `Matricule`, `Poste`, `Equipe`, `fk_zone`) VALUES ('$nom','$prenom','$Matricule','$Poste','$Equipe','$zone')");
+        $this->db->execute();
+    }
+
+    public function addJustification($data,$date){
+        $justification = $data["justification"];
+        $id = $data["id"];
+        $this->db->query("UPDATE `operateurs` SET `justification`='$justification',`date_jus`='$date' WHERE id = $id");
         $this->db->execute();
     }
 

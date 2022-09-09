@@ -113,4 +113,50 @@
       
       $this->view('pages/AjouterOp', $data); 
     }
+
+    public function addjust(){
+      $oper = $this->TeamL->getOpWithZone($_SESSION['id']);
+      $data = [
+        ["title" =>"addjust"],
+        ["operateurs" => $oper]
+      ];
+
+      $this->view('pages/addjust', $data);  
     }
+
+    public function profileTeam(){
+      $Team = $this->TeamL->getTeamById($_SESSION['id']);
+      $data = [
+        ["title" =>"profileTeam"],
+        ["TeamLeader" => $oper]
+      ];
+      $this->view('pages/profileTeam', $data);  
+    }
+
+    public function teamleaders(){
+      $team = $this->SeniorModel->getTeamLeader($_SESSION['idSenior']);
+      $data = [
+        ["title" =>"teamleaders"],
+        ["TeamLeader" => $team]
+      ];
+      $this->view('pages/teamleaders', $data);  
+    }
+
+    public function AjouterTeam(){
+      $data = [
+        ["title" =>"AjouterTeam"]
+      ];
+      
+      $this->view('pages/AjouterTeam', $data); 
+    }
+
+    public function addjustTeam(){
+      $team = $this->SeniorModel->getTeamLeader($_SESSION['idSenior']);
+      $data = [
+        ["title" =>"addjustTeam"],
+        ["TeamLeaders" => $team]
+      ];
+
+      $this->view('pages/addjustTeam', $data);  
+    }
+}

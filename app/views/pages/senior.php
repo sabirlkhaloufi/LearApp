@@ -8,6 +8,10 @@
                 <a href=""><img src="<?php echo URLROOT ?>/public/images/logo.png" alt="" width="150"></a>
             </div>
             <div class="d-flex gap-2 align-items-center">
+            
+            <a href="<?php echo URLROOT ?>/pages/addjustTeam" class="btn btn-primary">Add Justification</a>
+            <a href="<?php echo URLROOT ?>/pages/updateTimeSenior" class="btn btn-primary">Update Time</a>
+            <a class="btn btn-primary" href="<?php echo URLROOT ?>/pages/TeamLeaders">TeamLeaders</a>
             <p class="text-center mt-3"><?php echo $_SESSION['nom']." ".$_SESSION['prenom'] ?></p>
             <div class="dropdown">
                 <div class="dropdown-toggle d-flex gap-2 align-items-center" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -18,7 +22,6 @@
                     <li><a class="dropdown-item" href="<?php echo URLROOT ?>/UserController/logout">Logout</a></li>
                 </ul>
             </div>
-            <a href="<?php echo URLROOT ?>/pages/updateTimeSenior" class="btn btn-primary">Update Time</a>
             <!-- <a href="<?php echo URLROOT ?>/UserController/logout" class="btn btn-danger">Logout</a> -->
             </div>
             
@@ -32,10 +35,10 @@
     <div class="d-flex flex-column flex-lg-row justify-content-center gap-5 align-items-center pt-5">
         <h3 class="text-center">Senior: <?php echo $_SESSION['nom']." ".$_SESSION['prenom'] ?></h3>
         <div>
-            <span class="btn btn-danger">absence</span>
+        <span class="btn btn-danger">absence</span>
             <span class="btn btn-success">present</span>
-            <span class="btn btn-warning">retard
-            </span>
+            <span class="btn btn-warning">retard</span>
+            <span class="btn btn-secondary">sen poste</span>
             <!-- <span class="btn btn-secondary">justify</span> -->
         </div>
     </div>
@@ -60,19 +63,32 @@
                         if($team->time > $team->timeTeam){ 
                              ?>
 
+                                <?php if($team->Poste == null){ ?>
+                                <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-secondary py-2 px-3 text-white"><?php echo $team->nom ?></a>
+                                <?php }else{ ?>
+
                             <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-warning py-2 px-3 text-white"><?php echo $team->nom ?></a>
+                            <?php }?>
 
                         <?php 
-                        }else{
-                             ?>
+                        }else{?>
 
-                            <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-success py-2 px-3 text-white"><?php echo $team->nom ?></a>
+                            <?php if($team->Poste == null){ ?>
+                                <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-secondary py-2 px-3 text-white"><?php echo $team->nom ?></a>
+                            <?php }else{ ?>
+                            
+                                <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-success py-2 px-3 text-white"><?php echo $team->nom ?></a>
+                            <?php } ?>
+
+                            
                         <?php
                      }; 
                      ?>
 
 
                         <?php }else{?>
+
+
                         <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-danger py-2 px-3 text-white"><?php echo $team->nom ?></a>
                 
 

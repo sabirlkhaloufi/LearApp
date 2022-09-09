@@ -7,9 +7,9 @@
             </div>
             <div class="d-flex gap-2 align-items-center">
             
-            <a href="<?php echo URLROOT ?>/pages/addjustTeam" class="btn btn-primary">Add Justification</a>
-            <a href="<?php echo URLROOT ?>/pages/updateTimeSenior" class="btn btn-primary">Update Time</a>
-            <a class="btn btn-primary" href="<?php echo URLROOT ?>/pages/TeamLeaders">TeamLeaders</a>
+            <a href="<?php echo URLROOT ?>/pages/addjust" class="btn btn-primary">Add Justification</a>
+            <a href="<?php echo URLROOT ?>/pages/updateTime" class="btn btn-primary">Update Time</a>
+            <a class="btn btn-primary" href="<?php echo URLROOT ?>/pages/operateurs">Operateurs</a>
             <p class="text-center mt-3"><?php echo $_SESSION['nom']." ".$_SESSION['prenom'] ?></p>
             <div class="dropdown">
                 <div class="dropdown-toggle d-flex gap-2 align-items-center" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -25,58 +25,27 @@
             
         </div>
     </header>
-    <?php
-                $dateTime =  date("Y-m-d H:i:s");
-                $dateTime = explode(" ", $dateTime);
-                $date = $dateTime[0];
-            ?>
 
-    <main class="vw-100 vh-100">
-    <!-- <h3 class="text-center pt-4">TeamLeader: <?php echo $data[1]['nom']->nom." ".$data[1]['nom']->prenom ?></h3> -->
-
-    <div class="d-flex flex-column flex-lg-row justify-content-center gap-5 align-items-center pt-5">
-        <h3 class="text-center">TeamLeader: <?php echo $data[1]['nom']->nom." ".$data[1]['nom']->prenom ?>
-      
-        </h3>
-        <div>
-            <span class="btn btn-danger">absence</span>
-            <span class="btn btn-success">present</span>
-            <span class="btn btn-warning">retard</span>
-            <span class="btn btn-secondary">sen poste</span>
-            <!-- <span class="btn btn-secondary">justify</span> -->
-        </div>
-
-        
-        
-    </div>
-
-    <?php if($data[1]['nom']->date != $date){ ?>
-      <div class="card shadow-sm p-3 mt-2 mb-2 bg-body rounded container-fluid w-50">
-        <h4>Justification :  
-        <?php if($data[1]['nom']->date_just == $date){ ?>
-          <?php echo $data[1]['nom']->justification  ?>
-          <?php }else{ ?>
-            <?php echo 'Non justifier'; ?>
-            <?php  } ?>
-            </h4>
-        </div>
-
-    <?php } ?>
-    
-
+    <main class="vw-100">
     
     <div class="d-flex gap-2 flex-wrap mt-5 justify-content-center align-items-center">
 
     <?php foreach ($data[1]["zones"] as $zone):?>
-
+        
     <div class="card shadow-sm p-3 mb-5 bg-body rounded">
         <div class="card-body" style="width: 18rem;">
             <h4 class="card-title text-center mb-3 text-dark"><?php echo $zone->designation; ?></h4>
             <ul class="d-flex gap-2 flex-wrap justify-content-start">
-            
+            <?php
+                $dateTime =  date("Y-m-d H:i:s");
+                $dateTime = explode(" ", $dateTime);
+                $date = $dateTime[0];
+                $time = $dateTime[1];
+            ?>
                 <?php foreach ($data[1]["team"] as $team): ?>
 
-                    <?php if($team->designation == $zone->designation){ ?>
+            
+                <?php if($team->designation == $zone->designation){ ?>
                     <?php if($team->date == $date){ ?>
 
                         <?php if($team->time > $zone->time){ ?>
@@ -135,7 +104,6 @@
                     <?php } ?>   
                 <?php } ?>
                 <?php endforeach; ?>
-
             </ul>
         </div>
     </div>
@@ -146,5 +114,5 @@
 
     </main>
 </div>
-
+<!-- <img class="vd" src="<?php echo URLROOT ?>/images/logo.png" alt=""> -->
     <?php include_once APPROOT . '/views/inc/linkJS.php'; ?>
