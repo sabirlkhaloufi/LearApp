@@ -1,11 +1,15 @@
 <?php include_once APPROOT . '/views/inc/head.php'; ?>
 <body class="" style="background-image:url('<?php echo URLROOT ?>/images/Automotive_Kroschu-fc7f0c2f.jpg');">
-    <header class="shadow-sm bg-body position-sticky top-0 w-100">
+<header class="shadow-sm bg-body position-sticky top-0 w-100">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="logo">
                 <a href=""><img src="<?php echo URLROOT ?>/public/images/logo.png" alt="" width="150"></a>
             </div>
             <div class="d-flex gap-2 align-items-center">
+            
+            <a href="<?php echo URLROOT ?>/pages/addjust" class="btn btn-primary">Add Justification</a>
+            <a href="<?php echo URLROOT ?>/pages/updateTime" class="btn btn-primary">Update Time</a>
+            <a class="btn btn-primary" href="<?php echo URLROOT ?>/pages/operateurs">Operateurs</a>
             <p class="text-center mt-3"><?php echo $_SESSION['nom']." ".$_SESSION['prenom'] ?></p>
             <div class="dropdown">
                 <div class="dropdown-toggle d-flex gap-2 align-items-center" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -16,7 +20,6 @@
                     <li><a class="dropdown-item" href="<?php echo URLROOT ?>/UserController/logout">Logout</a></li>
                 </ul>
             </div>
-            <a href="" class="btn btn-primary">Update Time</a>
             <!-- <a href="<?php echo URLROOT ?>/UserController/logout" class="btn btn-danger">Logout</a> -->
             </div>
             

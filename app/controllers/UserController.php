@@ -65,6 +65,7 @@
             $date = $dateTime[0];
             $time = $dateTime[1];
             $this->UserModel->badge($code,$date,$time);
+            redirect('pages/badge');
         }
 
     }

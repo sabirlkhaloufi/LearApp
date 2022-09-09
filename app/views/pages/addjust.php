@@ -36,47 +36,17 @@
 
     <div class="card shadow-sm p-3 mb-5 bg-body rounded w-50">
         <div class="card-body ">
-        <form action="<?php echo URLROOT ?>/TeamLeaderController/AjouterOp" method="POST">
-            <div class=" d-flex gap-3">
-                <div class="mb-3 w-100">
-                    <label for="exampleInputEmail1" class="form-label">zone</label>
-                    <select name="zone" id="" class="form-control form-control-user w-100">
-                        
-                        <?php foreach ($data[1]["zones"] as $zone): ?>
-                        <option value="<?php echo $zone->id ?>"><?php echo $zone->designation ?></option>
-                        <?php endforeach; ?>
-                    </select>            
-                </div>
-
-                <div class="mb-3 w-100">
-                    <label for="exampleInputEmail1" class="form-label">nom</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1"  name="nom">          
-                </div>
-            </div>
-            <div class=" d-flex gap-3">
-                <div class="mb-3 w-100">
-                    <label for="exampleInputEmail1" class="form-label">prenom</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1"  name="prenom">                      
-                </div>
-
-                <div class="mb-3 w-100">
-                    <label for="exampleInputEmail1" class="form-label">poste</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1"  name="Poste">          
-                </div>
-            </div>
-            <div class=" d-flex gap-3">
-                <div class="mb-3 w-100">
-                    <label for="exampleInputEmail1" class="form-label">Matricule</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="Matricule">                 
-                </div>
-
-                <div class="mb-3 w-100">
-                    <label for="exampleInputEmail1" class="form-label">Equipe</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="Equipe">          
-                </div>
-            </div>
-
-            <button class="btn btn-danger d-block btn-user w-100" type="submit">update</button>
+        <form action="<?php echo URLROOT ?>/TeamLeaderController/addJustification" method="POST">
+            <div class="mb-3">
+                <select name="id" id="" class="form-control form-control-user w-100">
+                    <?php foreach ($data[1]["operateurs"] as $op): ?>
+                    <option value="<?php echo $op->id ?>"><?php echo $op->Matricule ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <textarea class="form-control form-control-user w-100 mt-2" name="justification" id="" cols="15" rows="4"></textarea>
+            <!-- <input class="form-control form-control-user w-100 mt-2" type="time" id="exampleInputPassword" placeholder="Entrer votre code" name="time"> -->
+        </div>
+            <button class="btn btn-danger d-block btn-user w-100" type="submit">add</button>
         </form>
         </div>
     </div>

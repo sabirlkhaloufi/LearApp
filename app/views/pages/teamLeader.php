@@ -6,6 +6,10 @@
                 <a href=""><img src="<?php echo URLROOT ?>/public/images/logo.png" alt="" width="150"></a>
             </div>
             <div class="d-flex gap-2 align-items-center">
+            
+            <a href="<?php echo URLROOT ?>/pages/addjust" class="btn btn-primary">Add Justification</a>
+            <a href="<?php echo URLROOT ?>/pages/updateTime" class="btn btn-primary">Update Time</a>
+            <a class="btn btn-primary" href="<?php echo URLROOT ?>/pages/operateurs">Operateurs</a>
             <p class="text-center mt-3"><?php echo $_SESSION['nom']." ".$_SESSION['prenom'] ?></p>
             <div class="dropdown">
                 <div class="dropdown-toggle d-flex gap-2 align-items-center" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -16,8 +20,6 @@
                     <li><a class="dropdown-item" href="<?php echo URLROOT ?>/UserController/logout">Logout</a></li>
                 </ul>
             </div>
-            <a href="<?php echo URLROOT ?>/pages/updateTime" class="btn btn-primary">Update Time</a>
-            <a class="btn btn-primary" href="<?php echo URLROOT ?>/pages/operateurs">Operateurs</a>
             <!-- <a href="<?php echo URLROOT ?>/UserController/logout" class="btn btn-danger">Logout</a> -->
             </div>
             
@@ -30,8 +32,8 @@
         <div>
             <span class="btn btn-danger">absence</span>
             <span class="btn btn-success">present</span>
-            <span class="btn btn-warning">retard
-            </span>
+            <span class="btn btn-warning">retard</span>
+            <span class="btn btn-secondary">sen poste</span>
             
             <div>
                 
@@ -55,23 +57,65 @@
             ?>
                 <?php foreach ($data[1]["team"] as $team): ?>
 
-                <?php 
-                if($team->designation == $zone->designation){
-                    if($team->date == $date){
+            
+                <?php if($team->designation == $zone->designation){ ?>
+                    <?php if($team->date == $date){ ?>
 
-                        if($team->time > $zone->time){
-                            echo '<li class="btn btn-warning py-2 px-3 text-white">'. $team->nom .'</li>';
-                        }
-                        else{
-                            echo '<li class="btn btn-success py-2 px-3 text-white">'. $team->nom .'</li>';
-                        }
+                        <?php if($team->time > $zone->time){ ?>
+                            <li class="btn btn-warning py-2 px-3 text-white"><?php echo $team->nom ?></li>
+                        <?php }else{?>
+                            <?php if($team->Poste == null){ ?>
+                                <li class="btn btn-secondary py-2 px-3 text-white"><?php echo $team->nom ?></li>
+                            <?php }else{ ?>
+                            
+                                <li class="btn btn-success py-2 px-3 text-white"><?php echo $team->nom ?></li>
+                            <?php } ?>
+                        <?php } ?>
                         
-                    }
-                    else{
-                        echo '<li class="btn btn-danger py-2 px-3 text-white">'. $team->nom .'</li>';
-                    }    
-                }
-                 ?>
+                    <?php }else{ ?>
+                        <?php if($team->date_jus == $date){ ?>
+                            <li class="btn btn-danger py-2 px-3 text-white" data-bs-toggle="modal" data-bs-target="#Modal<?php echo $team->id ?>"><?php echo $team->nom ?></li>
+                            
+                            <div class="modal fade mt-7" id="Modal<?php echo $team->id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Justification</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body text-dark h5">
+                                    <?php echo $team->justification ?>
+                                    <p class="mt-2">Poste : <?php echo $team->Poste ?></p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        <?php }else{ ?>
+                            <li class="btn btn-danger py-2 px-3 text-white" data-bs-toggle="modal" data-bs-target="#Modal<?php echo $team->id ?>"><?php echo $team->nom ?></li>
+                            
+                            <div class="modal fade mt-7" id="Modal<?php echo $team->id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Justification</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body text-dark h5">
+                                    Non justifier
+                                    <p class="mt-2">Poste : <?php echo $team->Poste ?></p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        <?php } ?>
+                    <?php } ?>   
+                <?php } ?>
                 <?php endforeach; ?>
             </ul>
         </div>

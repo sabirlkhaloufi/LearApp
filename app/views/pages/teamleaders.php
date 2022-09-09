@@ -26,29 +26,45 @@
         </div>
     </header>
 
-    <main class=" vw-100">
-    <div class="d-flex flex-column flex-lg-row justify-content-center gap-5 align-items-center pt-5">
-        <a href="<?php echo URLROOT ?>/pages/senior" class="btn btn-primary">Retour</a>
-        <h3 class="text-center">Senior: <?php echo $_SESSION['nom']." ".$_SESSION['prenom'] ?></h3>
-    </div>
-    <div class="d-flex gap-2 flex-wrap mt-5 justify-content-center align-items-center">
-
-
-    <div class="card shadow-sm p-3 mb-5 bg-body rounded w-50">
-        <div class="card-body ">
-        <form action="<?php echo URLROOT ?>/SeniorController/updateTimeSenior" method="POST">
-            <div class="mb-3 d-flex gap-3">
-            <input class="form-control form-control-user w-100" type="time" id="exampleInputPassword" placeholder="Entrer votre code" name="time">
+    <main class="vw-100 vh-100">
+        <div class="pt-4 d-flex justify-content-between px-5">
+        <a href="<?php echo URLROOT ?>/pages/senior" class="btn btn-primary ">Retour</a>
+        <a href="<?php echo URLROOT ?>/pages/AjouterTeam" class="btn btn-primary ">Ajouter</a>
         </div>
-            <button class="btn btn-danger d-block btn-user w-100" type="submit">add Time</button>
-        </form>
-        </div>
-    </div>
+    
+    <div class="table-responsive container-fluid pt-5">
+            <table class="table bg-white">
+                <thead class="bg-table text-dark">
+                    <tr>
+                        <!-- <th>id</th> -->
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Poste</th>
+                        <th>Matricule</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                <?php foreach ($data[1]["TeamLeader"] as $team): ?>
+                    <tr>
+                        <!-- <td data-title="id">{{data.id}}</td> -->
+                        <td><?php echo  $team->nom ?></td>
+                        <td><?php echo  $team->prenom ?></td>
+                        <td><?php echo  $team->Poste ?></td>
+                        <td><?php echo  $team->Matricule ?></td>
+                        <td>
+                        <a href="<?php echo URLROOT ?>/SeniorController/updateTeam/<?php echo $team->id ?>"><i class="fa fa-edit fs-4 text-bleu"></i></a>
+                        <a href="<?php echo URLROOT ?>/SeniorController/deleteTeam/<?php echo $team->id ?>"><i class="fas fa-trash fs-4 text-bleu"></i></a>
+                        </td>
 
-    </div>
+                    </tr>  
 
-
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>  
     </main>
 </div>
-<!-- <img class="vd" src="<?php echo URLROOT ?>/images/logo.png" alt=""> -->
+
     <?php include_once APPROOT . '/views/inc/linkJS.php'; ?>
