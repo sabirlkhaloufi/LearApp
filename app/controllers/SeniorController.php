@@ -37,7 +37,7 @@
             ];
             
             $this->view('pages/updateTeam', $data); 
-          }
+        }
 
           public function UpdateTeamById($id){
             $this->SeniorModel->UpdateTeamById($_POST,$id);
@@ -58,6 +58,25 @@
             $this->SeniorModel->addJustification($_POST,$date);
             redirect("pages/addjustTeam");
           }
+
+
+          public function updateZone($id){
+            $Team = $this->SeniorModel->getTeamLeader($_SESSION['idSenior']);
+            $zone = $this->SeniorModel->getZoneById($id);
+            $data = [
+              ["title" =>"updateZone"],
+               ["Teamleader" => $Team],
+               ["zone" => $zone]
+            ];
+
+            $this->view('pages/updateZone', $data); 
+        }
+
+
+        public function UpdateZoneById($id){
+          $this->SeniorModel->UpdateZoneById($_POST,$id);
+            redirect("pages/zones");
+        }
                 
     }
 

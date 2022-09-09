@@ -1,16 +1,13 @@
 <?php include_once APPROOT . '/views/inc/head.php'; ?>
+
 <body class="" style="background-image:url('<?php echo URLROOT ?>/images/Automotive_Kroschu-fc7f0c2f.jpg');">
-<header class="shadow-sm bg-body position-sticky top-0 w-100">
+
+    <header class="shadow-sm bg-body position-sticky top-0 w-100">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="logo">
                 <a href=""><img src="<?php echo URLROOT ?>/public/images/logo.png" alt="" width="150"></a>
             </div>
             <div class="d-flex gap-2 align-items-center">
-            
-            <a href="<?php echo URLROOT ?>/pages/addjustTeam" class="btn btn-primary">Add Justification</a>
-            <a href="<?php echo URLROOT ?>/pages/updateTimeSenior" class="btn btn-primary">Update Time</a>
-            <a class="btn btn-primary" href="<?php echo URLROOT ?>/pages/TeamLeaders">TeamLeaders</a>
-            <a class="btn btn-primary" href="<?php echo URLROOT ?>/pages/zones">zones</a>
             <p class="text-center mt-3"><?php echo $_SESSION['nom']." ".$_SESSION['prenom'] ?></p>
             <div class="dropdown">
                 <div class="dropdown-toggle d-flex gap-2 align-items-center" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,6 +28,7 @@
         <a href="<?php echo URLROOT ?>/pages/senior" class="btn btn-primary ">Retour</a>
         <a href="<?php echo URLROOT ?>/pages/AjouterTeam" class="btn btn-primary ">Ajouter</a>
         </div>
+
     
     <div class="table-responsive container-fluid pt-5">
             <table class="table bg-white">
@@ -39,19 +37,17 @@
                         <!-- <th>id</th> -->
                         <th>Nom</th>
                         <th>Prenom</th>
-                        <th>Poste</th>
                         <th>Matricule</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     
-                <?php foreach ($data[1]["TeamLeader"] as $team): ?>
+                <?php foreach ($data[1]["seniors"] as $team): ?>
                     <tr>
                         <!-- <td data-title="id">{{data.id}}</td> -->
                         <td><?php echo  $team->nom ?></td>
                         <td><?php echo  $team->prenom ?></td>
-                        <td><?php echo  $team->Poste ?></td>
                         <td><?php echo  $team->Matricule ?></td>
                         <td>
                         <a href="<?php echo URLROOT ?>/SeniorController/updateTeam/<?php echo $team->id ?>"><i class="fa fa-edit fs-4 text-bleu"></i></a>

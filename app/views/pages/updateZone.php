@@ -36,17 +36,29 @@
 
     <div class="card shadow-sm p-3 mb-5 bg-body rounded w-50">
         <div class="card-body ">
-        <form action="<?php echo URLROOT ?>/SeniorController/addJustification" method="POST">
-            <div class="mb-3">
-                <select name="id" id="" class="form-control form-control-user w-100">
-                    <?php foreach ($data[1]["TeamLeaders"] as $op): ?>
-                    <option value="<?php echo $op->id ?>"><?php echo $op->Matricule ?></option>
+        <form action="<?php echo URLROOT ?>/SeniorController/UpdateZoneById/<?php echo $data[2]["zone"]->id  ?>" method="POST">
+            <div class=" d-flex gap-3">
+                <div class="mb-3 w-100">
+                    <label for="exampleInputEmail1" class="form-label">zone</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" value="<?php echo $data[2]["zone"]->designation  ?>"  name="zone">          
+                </div>
+            </div>
+            <div class=" d-flex gap-3">
+                <div class="mb-3 w-100">
+                    <label for="exampleInputEmail1" class="form-label">teamleader</label>
+                    <select name="Matricule" id="" class="form-control form-control-user w-100">
+                    <?php foreach ($data[1]["Teamleader"] as $zone): ?>
+                    <?php if($data[2]["zone"]->Matricule == $zone->Matricule ){ ?>
+                    <option value="<?php echo $zone->id ?>"><?php echo $data[2]["zone"]->Matricule ?></option>
+                    <?php } ?>
+                    <option value="<?php echo $zone->id ?>"><?php echo $zone->Matricule ?></option>
+
                     <?php endforeach; ?>
                 </select>
-                <textarea class="form-control form-control-user w-100 mt-2" name="justification" id="" cols="15" rows="4"></textarea>
-            <!-- <input class="form-control form-control-user w-100 mt-2" type="time" id="exampleInputPassword" placeholder="Entrer votre code" name="time"> -->
-        </div>
-            <button class="btn btn-danger d-block btn-user w-100" type="submit">add</button>
+                </div>
+            </div>
+
+            <button class="btn btn-danger d-block btn-user w-100" type="submit">update</button>
         </form>
         </div>
     </div>

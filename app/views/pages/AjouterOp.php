@@ -16,7 +16,6 @@
                 <img  src="<?php echo URLROOT; ?>/public/images/avatar.svg" alt="" width="50">
                 </div>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li><a class="dropdown-item" href="<?php echo URLROOT ?>/UserController/logout">Logout</a></li>
                 </ul>
             </div>

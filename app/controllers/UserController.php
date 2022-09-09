@@ -33,8 +33,15 @@
                         $_SESSION['fk-zone'] = $data->fk_zone;
 
                     if($_SESSION['role'] == "senior"){
-                        $_SESSION['idSenior'] = $data->id;
-                        redirect('pages/senior');
+                        
+                        if($data->role == null){
+                            $_SESSION['idSenior'] = $data->id;
+                            redirect('pages/senior'); 
+                        }
+                        else{
+                            $_SESSION['idSenior'] = $data->id;
+                            redirect('pages/admin');
+                        }
                     }
 
                     else{
