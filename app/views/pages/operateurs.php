@@ -16,7 +16,6 @@
                 <img  src="<?php echo URLROOT; ?>/public/images/avatar.svg" alt="" width="50">
                 </div>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li><a class="dropdown-item" href="<?php echo URLROOT ?>/UserController/logout">Logout</a></li>
                 </ul>
             </div>
@@ -28,9 +27,16 @@
 
     <main class="vw-100 vh-100">
         <div class="pt-4 d-flex justify-content-between px-5">
-        <a href="<?php echo URLROOT ?>/pages/teamLeader" class="btn btn-primary ">Retour</a>
+        <a href="<?php echo URLROOT ?>/pages/teamLeader" class="btn btn-primary ">Imprimer</a>
         <a href="<?php echo URLROOT ?>/pages/AjouterOp" class="btn btn-primary ">Ajouter</a>
         </div>
+
+        <?php
+                $dateTime =  date("Y-m-d H:i:s");
+                $dateTime = explode(" ", $dateTime);
+                $date = $dateTime[0];
+                $time = $dateTime[1];
+            ?>
     
     <div class="table-responsive container-fluid pt-5">
             <table class="table bg-white">
@@ -41,6 +47,7 @@
                         <th>Prenom</th>
                         <th>Poste</th>
                         <th>Matricule</th>
+                        <th>status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -53,6 +60,13 @@
                         <td><?php echo  $oper->prenom ?></td>
                         <td><?php echo  $oper->Poste ?></td>
                         <td><?php echo  $oper->Matricule ?></td>
+                        <td>
+                            <?php if($oper->date == $date){ ?>
+                                <span class="btn btn-success text-white btn-sm">Present</span>
+                            <?php }else{ ?>
+                                <span class="btn btn-danger text-white btn-sm">Absence</span>
+                            <?php }?>
+                        </td>
                         <td>
                         <a href="<?php echo URLROOT ?>/TeamLeaderController/updateOp/<?php echo $oper->id ?>"><i class="fa fa-edit fs-4 text-bleu"></i></a>
                         <a href="<?php echo URLROOT ?>/TeamLeaderController/deleteOp/<?php echo $oper->id ?>"><i class="fas fa-trash fs-4 text-bleu"></i></a>

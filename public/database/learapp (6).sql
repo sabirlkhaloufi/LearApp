@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2022 at 03:15 AM
+-- Generation Time: Sep 09, 2022 at 06:01 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -74,26 +74,28 @@ CREATE TABLE `operateurs` (
   `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `prenom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Matricule` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Poste` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Poste` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Equipe` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `fk_zone` bigint(20) UNSIGNED NOT NULL,
   `date` date DEFAULT NULL,
   `time` time NOT NULL,
-  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `justification` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date_jus` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `operateurs`
 --
 
-INSERT INTO `operateurs` (`id`, `nom`, `prenom`, `Matricule`, `Poste`, `Equipe`, `fk_zone`, `date`, `time`, `code`) VALUES
-(20, 'sabir', 'sabir', '123', '1', '1', 3, '2022-08-30', '15:05:06', 'code1'),
-(22, 'said', 'said', '12', '2', '3', 4, '2022-08-31', '19:11:42', 'code2'),
-(23, 'hanane', 'hanane', '12', '2', '3', 3, '2022-09-02', '16:28:52', 'code3'),
-(24, 'aya', 'ayaa', 'jj', 'jj', '5', 5, '2022-08-31', '15:56:31', 'code4'),
-(25, 'aziz', 'aziz', '23', '2', '3', 7, '2022-09-05', '00:35:01', 'code5'),
-(26, 'samira', 'samira', '23', '2', '3', 6, '2022-09-05', '24:36:27', 'code6'),
-(27, 'aiccha', 'aiccha', '23', '2', '3', 5, NULL, '00:00:00', 'code7');
+INSERT INTO `operateurs` (`id`, `nom`, `prenom`, `Matricule`, `Poste`, `Equipe`, `fk_zone`, `date`, `time`, `code`, `justification`, `date_jus`) VALUES
+(20, 'sabir', 'sabir', '123', '1', '1', 3, '2022-08-30', '15:05:06', 'code1', '', NULL),
+(22, 'said', 'said', '12', '2', '3', 4, '2022-08-31', '19:11:42', 'code2', '', NULL),
+(23, 'hanane', 'hanane', '12', '2', '3', 3, '2022-09-08', '14:02:13', 'code3', '', NULL),
+(25, 'aziz', 'aziz', '23', '2', '3', 7, '2022-09-05', '00:35:01', 'code5', '', NULL),
+(26, 'samira', 'samira', '237777', '', '3', 6, '2022-09-09', '10:24:47', 'code6', 'malade', '2022-09-09'),
+(27, 'aiccha', 'aiccha', '23', '2', '3', 5, '2022-09-09', '10:25:10', 'code7', '', NULL),
+(28, 'ff', 'ff', 'ff', 'ff', 'ff', 5, NULL, '00:00:00', '', 'fff', '2022-09-08');
 
 -- --------------------------------------------------------
 
@@ -139,16 +141,17 @@ CREATE TABLE `seniors` (
   `Equipe` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `prenom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `seniors`
 --
 
-INSERT INTO `seniors` (`id`, `nom`, `Matricule`, `Equipe`, `prenom`, `email`, `password`) VALUES
-(1, 'sabir', '123', '1', 'sabir', 'sabir@gmail.com', 'sabir123'),
-(2, 'wassim', '12', '2', 'wassim', 'wassim', 'wassim123');
+INSERT INTO `seniors` (`id`, `nom`, `Matricule`, `Equipe`, `prenom`, `email`, `password`, `role`) VALUES
+(1, 'sabir', '123', '1', 'sabir', 'sabir@gmail.com', 'sabir123', ''),
+(2, 'wassim', '12', '2', 'wassim', 'wassim@gmail.com', 'wassim123', 'admin');
 
 -- --------------------------------------------------------
 
@@ -168,16 +171,19 @@ CREATE TABLE `teamleaders` (
   `date` date DEFAULT NULL,
   `time` time NOT NULL,
   `code` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `timeTeam` time NOT NULL
+  `timeTeam` time NOT NULL,
+  `justification` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date_just` date DEFAULT NULL,
+  `Poste` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `teamleaders`
 --
 
-INSERT INTO `teamleaders` (`id`, `nom`, `prenom`, `Matricule`, `Equipe`, `fk_senior`, `email`, `password`, `date`, `time`, `code`, `timeTeam`) VALUES
-(1, 'aicha', 'aicha', 'A1234', '1', 2, 'aicha@gmail.com', 'aicha123', NULL, '00:00:00', 'aicha123', '00:00:00'),
-(2, 'sara', 'sara', 'H345', '2', 1, 'sara@gmail.com', 'sara123', '2022-09-07', '02:56:35', 'sara123', '02:00:00');
+INSERT INTO `teamleaders` (`id`, `nom`, `prenom`, `Matricule`, `Equipe`, `fk_senior`, `email`, `password`, `date`, `time`, `code`, `timeTeam`, `justification`, `date_just`, `Poste`) VALUES
+(1, 'aicha', 'aicha', 'A1234', '1', 2, 'aicha@gmail.com', 'aicha123', NULL, '00:00:00', 'aicha123', '00:00:00', '', NULL, 'DD'),
+(2, 'sarakh', 'sarah', 'H345', '2', 1, 'sara@gmail.com', 'sara123', '2022-09-07', '03:18:22', 'sara123', '02:00:00', 'malade', '2022-09-09', '');
 
 -- --------------------------------------------------------
 
@@ -306,7 +312,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `operateurs`
 --
 ALTER TABLE `operateurs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -324,7 +330,7 @@ ALTER TABLE `seniors`
 -- AUTO_INCREMENT for table `teamleaders`
 --
 ALTER TABLE `teamleaders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`

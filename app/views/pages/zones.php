@@ -28,34 +28,30 @@
 
     <main class="vw-100 vh-100">
         <div class="pt-4 d-flex justify-content-between px-5">
-        <a href="<?php echo URLROOT ?>/pages/senior" class="btn btn-primary ">Retour</a>
-        <a href="<?php echo URLROOT ?>/pages/AjouterTeam" class="btn btn-primary ">Ajouter</a>
+        <a href="<?php echo URLROOT ?>/pages/senior" class="btn btn-primary ms-5">Retour</a>
         </div>
     
-    <div class="table-responsive container-fluid pt-5">
+    <div class="table-responsive container-fluid pt-5 w-75">
             <table class="table bg-white">
                 <thead class="bg-table text-dark">
                     <tr>
-                        <!-- <th>id</th> -->
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Poste</th>
-                        <th>Matricule</th>
-                        <th>Action</th>
+                        <th></th>
+                        <th></th>
+                        <th>zones</th>
+                        <th>teamleader</th>
                     </tr>
                 </thead>
                 <tbody>
                     
-                <?php foreach ($data[1]["TeamLeader"] as $team): ?>
+                <?php foreach ($data[1]["zones"] as $oper): ?>
                     <tr>
                         <!-- <td data-title="id">{{data.id}}</td> -->
-                        <td><?php echo  $team->nom ?></td>
-                        <td><?php echo  $team->prenom ?></td>
-                        <td><?php echo  $team->Poste ?></td>
-                        <td><?php echo  $team->Matricule ?></td>
+                        <td></td>
+                        <td></td>
+                        <td><?php echo  $oper->designation ?></td>
+                        <td><?php echo  $oper->Matricule ?></td>
                         <td>
-                        <a href="<?php echo URLROOT ?>/SeniorController/updateTeam/<?php echo $team->id ?>"><i class="fa fa-edit fs-4 text-bleu"></i></a>
-                        <a href="<?php echo URLROOT ?>/SeniorController/deleteTeam/<?php echo $team->id ?>"><i class="fas fa-trash fs-4 text-bleu"></i></a>
+                        <a href="<?php echo URLROOT ?>/SeniorController/updateZone/<?php echo $oper->id ?>"><i class="fa fa-edit fs-4 text-bleu"></i></a>
                         </td>
 
                     </tr>  

@@ -16,7 +16,6 @@
                 <img  src="<?php echo URLROOT; ?>/public/images/avatar.svg" alt="" width="50">
                 </div>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li><a class="dropdown-item" href="<?php echo URLROOT ?>/UserController/logout">Logout</a></li>
                 </ul>
             </div>
@@ -62,19 +61,19 @@
                     <?php if($team->date == $date){ ?>
 
                         <?php if($team->time > $zone->time){ ?>
-                            <li class="btn btn-warning py-2 px-3 text-white"><?php echo $team->nom ?></li>
+                            <li class="btn btn-warning py-2 px-3 text-white"><?php echo $team->Matricule ?></li>
                         <?php }else{?>
                             <?php if($team->Poste == null){ ?>
-                                <li class="btn btn-secondary py-2 px-3 text-white"><?php echo $team->nom ?></li>
+                                <li class="btn btn-secondary py-2 px-3 text-white"><?php echo $team->Matricule ?></li>
                             <?php }else{ ?>
                             
-                                <li class="btn btn-success py-2 px-3 text-white"><?php echo $team->nom ?></li>
+                                <li class="btn btn-success py-2 px-3 text-white"><?php echo $team->Matricule ?></li>
                             <?php } ?>
                         <?php } ?>
                         
                     <?php }else{ ?>
                         <?php if($team->date_jus == $date){ ?>
-                            <li class="btn btn-danger py-2 px-3 text-white" data-bs-toggle="modal" data-bs-target="#Modal<?php echo $team->id ?>"><?php echo $team->nom ?></li>
+                            <li class="btn btn-danger py-2 px-3 text-white" data-bs-toggle="modal" data-bs-target="#Modal<?php echo $team->id ?>"><?php echo $team->Matricule ?></li>
                             
                             <div class="modal fade mt-7" id="Modal<?php echo $team->id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog">
@@ -94,7 +93,7 @@
                               </div>
                             </div>
                         <?php }else{ ?>
-                            <li class="btn btn-danger py-2 px-3 text-white" data-bs-toggle="modal" data-bs-target="#Modal<?php echo $team->id ?>"><?php echo $team->nom ?></li>
+                            <li class="btn btn-danger py-2 px-3 text-white" data-bs-toggle="modal" data-bs-target="#Modal<?php echo $team->id ?>"><?php echo $team->Matricule ?></li>
                             
                             <div class="modal fade mt-7" id="Modal<?php echo $team->id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog">

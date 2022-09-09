@@ -12,13 +12,13 @@
             <a href="<?php echo URLROOT ?>/pages/addjustTeam" class="btn btn-primary">Add Justification</a>
             <a href="<?php echo URLROOT ?>/pages/updateTimeSenior" class="btn btn-primary">Update Time</a>
             <a class="btn btn-primary" href="<?php echo URLROOT ?>/pages/TeamLeaders">TeamLeaders</a>
+            <a class="btn btn-primary" href="<?php echo URLROOT ?>/pages/zones">zones</a>
             <p class="text-center mt-3"><?php echo $_SESSION['nom']." ".$_SESSION['prenom'] ?></p>
             <div class="dropdown">
                 <div class="dropdown-toggle d-flex gap-2 align-items-center" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 <img  src="<?php echo URLROOT; ?>/public/images/avatar.svg" alt="" width="50">
                 </div>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li><a class="dropdown-item" href="<?php echo URLROOT ?>/UserController/logout">Logout</a></li>
                 </ul>
             </div>
@@ -64,20 +64,20 @@
                              ?>
 
                                 <?php if($team->Poste == null){ ?>
-                                <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-secondary py-2 px-3 text-white"><?php echo $team->nom ?></a>
+                                <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-secondary py-2 px-3 text-white"><?php echo $team->Matricule ?></a>
                                 <?php }else{ ?>
 
-                            <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-warning py-2 px-3 text-white"><?php echo $team->nom ?></a>
+                            <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-warning py-2 px-3 text-white"><?php echo $team->Matricule ?></a>
                             <?php }?>
 
                         <?php 
                         }else{?>
 
                             <?php if($team->Poste == null){ ?>
-                                <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-secondary py-2 px-3 text-white"><?php echo $team->nom ?></a>
+                                <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-secondary py-2 px-3 text-white"><?php echo $team->Matricule ?></a>
                             <?php }else{ ?>
                             
-                                <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-success py-2 px-3 text-white"><?php echo $team->nom ?></a>
+                                <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-success py-2 px-3 text-white"><?php echo $team->Matricule ?></a>
                             <?php } ?>
 
                             
@@ -89,7 +89,7 @@
                         <?php }else{?>
 
 
-                        <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-danger py-2 px-3 text-white"><?php echo $team->nom ?></a>
+                        <a href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>" class="btn btn-danger py-2 px-3 text-white"><?php echo $team->Matricule ?></a>
                 
 
                     
@@ -99,7 +99,7 @@
         </div>
     </div>
         <!-- <?php foreach ($data[1]['team'] as $team):?>
-        <a class="btn btn-primary py-2 px-3" href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>"> <?php echo $team->nom ?> </a>
+        <a class="btn btn-primary py-2 px-3" href="<?php echo URLROOT."/TeamLeaderController/TeamBySenior/".$team->id ?>"> <?php echo $team->Matricule ?> </a>
 
         <?php endforeach; ?> -->
    

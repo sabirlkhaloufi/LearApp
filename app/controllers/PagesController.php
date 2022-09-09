@@ -159,4 +159,26 @@
 
       $this->view('pages/addjustTeam', $data);  
     }
+
+
+    public function zones(){
+      $zones = $this->SeniorModel->getZoneTeam($_SESSION['idSenior']);
+      $data = [
+        ["title" =>"zones"],
+        ["zones" => $zones]
+      ];
+
+      $this->view('pages/zones', $data);  
+    }
+
+
+    public function admin(){
+      $seniors = $this->SeniorModel->getAllSenior();
+      $data = [
+        ["title" =>"admin"],
+        ["seniors" => $seniors]
+      ];
+
+      $this->view('pages/admin/admin', $data);  
+    }
 }

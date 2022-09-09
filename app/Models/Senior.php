@@ -36,7 +36,7 @@ public function countTeamLeader($fkSenior){
     return $this->db->resultSet();
 }
 
-public function getSeniors(){
+public function getSeniorsFromAdmin(){
     $this->db->query("SELECT * FROM `seniors`");
     return $this->db->resultSet(); 
 }
@@ -83,4 +83,38 @@ public function addJustification($data,$date){
     $this->db->query("UPDATE `teamleaders` SET `justification`='$justification',`date_just`='$date' WHERE id = $id");
     $this->db->execute();
 }
+
+
+public function getZoneTeam($idSenior){
+    $this->db->query("SELECT zones.*,teamleaders.Matricule
+    FROM zones
+    INNER JOIN teamleaders
+    ON zones.fk_teamLeader = teamleaders.id WHERE teamleaders.fk_senior = $idSenior");
+    return $this->db->resultSet();  
+}
+
+
+public function getZoneById($id){
+    $this->db->query("SELECT zones.*,teamleaders.Matricule
+    FROM zones
+    INNER JOIN teamleaders
+    ON zones.fk_teamLeader = teamleaders.id WHERE zones.id = $id");
+    return $this->db->single();  
+}
+
+
+
+
+    public function UpdateZoneById($data,$id){
+        $zone = $data["zone"];
+        $TeamLeader = $data["Matricule"];
+        $this->db->query("UPDATE `zones` SET `fk_teamleader`='$TeamLeader' WHERE id = $id");
+        $this->db->execute();
+    }
+
+
+    public function getAllSenior(){
+        $this->db->query("SELECT * FROM `seniors` WHERE role = '' ");
+        return $this->db->resultSet();  
+    }
 }
