@@ -42,7 +42,7 @@
             <span class="btn btn-danger">absence</span>
             <span class="btn btn-success">present</span>
             <span class="btn btn-warning">retard</span>
-            <span class="btn btn-secondary">sen poste</span>
+            <span class="btn btn-secondary">Sans poste</span>
             <!-- <span class="btn btn-secondary">justify</span> -->
         </div>
 
