@@ -30,13 +30,13 @@
                         $_SESSION['role'] = $data->role;
                         $_SESSION['nom'] = $data->nom;
                         $_SESSION['prenom'] = $data->prenom;
-                        $_SESSION['fk-zone'] = $data->fk_zone;
+                        // $_SESSION['fk-zone'] = $data->fk_zone;
 
                     if($_SESSION['role'] == "senior"){
                         
-                        if($data->role == null){
+                        if($data->ROLE == null){
                             $_SESSION['idSenior'] = $data->id;
-                            redirect('pages/senior'); 
+                            redirect('pages/senior');
                         }
                         else{
                             $_SESSION['idSenior'] = $data->id;

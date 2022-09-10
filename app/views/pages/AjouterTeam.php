@@ -79,7 +79,7 @@
 
                 <div class="mb-3 w-100">
                     <label for="exampleInputEmail1" class="form-label">confirmer mots de passe</label>
-                    <input type="cPassword" class="form-control" id="exampleInputEmail1" name="cPassword">          
+                    <input type="Password" class="form-control" id="exampleInputEmail1" name="cPassword">          
                 </div>
             </div>
 
