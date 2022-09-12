@@ -104,6 +104,31 @@
       $this->SeniorModel->updateSeniorById($_POST,$id);
       redirect("pages/admin");
     }
+
+    public function deleteJust($id){
+      $this->SeniorModel->deleteJust($id);
+      redirect("pages/justifications");
+    }
+
+    public function AjouterJust(){
+      $this->SeniorModel->AjouterJust($_POST);
+      redirect("pages/justifications");
+    }
+
+    public function updateJust($id){
+      $just = $this->SeniorModel->getJustById($id);
+      $data = [
+        ["title" =>"updateJustification"],
+        ["just" => $just]
+      ];
+
+      $this->view('pages/admin/updatejust', $data); 
+    }
+
+    public function updateJustById($id){
+      $this->SeniorModel->updateJustById($id,$_POST);
+      redirect("pages/justifications");
+    }
                 
     }
 

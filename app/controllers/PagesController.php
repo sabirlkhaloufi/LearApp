@@ -66,6 +66,9 @@
     }
 
     public function updateTime(){
+      if(!isset($_SESSION['id'])){
+        redirect('pages/index');
+      }
     $zone = $this->TeamL->getZone($_SESSION['id']);
       $data = [
         ["title" =>"updateTime"],
@@ -77,6 +80,9 @@
 
 
     public function updateTimeSenior(){
+      if(!isset($_SESSION['idSenior'])){
+        redirect('pages/index');
+      }
       $data = [
         ["title" =>"updateTime"],
       ];
@@ -85,6 +91,9 @@
     }
 
     public function operateurs(){
+      if(!isset($_SESSION['id'])){
+        redirect('pages/index');
+      }
       $oper = $this->TeamL->getOpWithZone($_SESSION['id']);
       $data = [
         ["title" =>"operateurs"],
@@ -95,6 +104,9 @@
     }
 
     public function updateOp($id){
+      if(!isset($_SESSION['id'])){
+        redirect('pages/index');
+      }
       echo $id;
       $data = [
         ["title" =>"updateOp"]
@@ -104,6 +116,9 @@
     }
 
     public function AjouterOp(){
+      if(!isset($_SESSION['id'])){
+        redirect('pages/index');
+      }
       $zone = $this->TeamL->getZone($_SESSION['id']);
       $data = [
         ["title" =>"AjouterOp"],
@@ -115,25 +130,26 @@
     }
 
     public function addjust(){
+      if(!isset($_SESSION['id'])){
+        redirect('pages/index');
+      }
       $oper = $this->TeamL->getOpWithZone($_SESSION['id']);
+      $just = $this->SeniorModel->getAllJust();
+
       $data = [
         ["title" =>"addjust"],
-        ["operateurs" => $oper]
+        ["operateurs" => $oper],
+        ["just" => $just]
+
       ];
 
       $this->view('pages/addjust', $data);  
     }
 
-    public function profileTeam(){
-      $Team = $this->TeamL->getTeamById($_SESSION['id']);
-      $data = [
-        ["title" =>"profileTeam"],
-        ["TeamLeader" => $oper]
-      ];
-      $this->view('pages/profileTeam', $data);  
-    }
-
     public function teamleaders(){
+      if(!isset($_SESSION['idSenior'])){
+        redirect('pages/index');
+      }
       $team = $this->SeniorModel->getTeamLeader($_SESSION['idSenior']);
       $data = [
         ["title" =>"teamleaders"],
@@ -143,6 +159,9 @@
     }
 
     public function AjouterTeam(){
+      if(!isset($_SESSION['idSenior'])){
+        redirect('pages/index');
+      }
       $data = [
         ["title" =>"AjouterTeam"]
       ];
@@ -151,10 +170,15 @@
     }
 
     public function addjustTeam(){
+      if(!isset($_SESSION['idSenior'])){
+        redirect('pages/index');
+      }
       $team = $this->SeniorModel->getTeamLeader($_SESSION['idSenior']);
+      $just = $this->SeniorModel->getAllJust();
       $data = [
         ["title" =>"addjustTeam"],
-        ["TeamLeaders" => $team]
+        ["TeamLeaders" => $team],
+        ["just" => $just]
       ];
 
       $this->view('pages/addjustTeam', $data);  
@@ -162,6 +186,9 @@
 
 
     public function zones(){
+      if(!isset($_SESSION['idSenior'])){
+        redirect('pages/index');
+      }
       $zones = $this->SeniorModel->getZoneTeam($_SESSION['idSenior']);
       $data = [
         ["title" =>"zones"],
@@ -173,6 +200,9 @@
 
 
     public function admin(){
+      if(!isset($_SESSION['idAdmin'])){
+        redirect('pages/index');
+      }
       $seniors = $this->SeniorModel->getAllSenior();
       $data = [
         ["title" =>"admin"],
@@ -184,10 +214,32 @@
 
 
     public function AjouterSenior(){
+      if(!isset($_SESSION['idAdmin'])){
+        redirect('pages/index');
+      }
       $data = [
         ["title" =>"AjouterSenior"]
       ];
 
       $this->view('pages/admin/AjouterSenior', $data);
+    }
+
+    public function justifications(){
+      $just = $this->SeniorModel->getAllJust();
+      $data = [
+        ["title" =>"justifications"],
+        ["just" => $just]
+      ];
+
+      $this->view('pages/admin/justifications', $data);
+    }
+
+
+    public function ajouterJust(){
+      $data = [
+        ["title" =>"Ajouterjustifications"]
+      ];
+
+      $this->view('pages/admin/ajouterJust', $data);
     }
 }

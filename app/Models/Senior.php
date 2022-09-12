@@ -152,4 +152,31 @@ public function getZoneById($id){
         $this->db->query("UPDATE `seniors` SET `email`='$email',`nom`='$nom',`prenom`='$prenom',`Matricule`='$Matricule',`Equipe`='$Equipe',`password`='$password' WHERE id = $id");
         $this->db->execute();
     }
+
+    public function getAllJust(){
+        $this->db->query("SELECT * FROM `justifications`");
+        return $this->db->resultSet();
+    }
+
+    public function deleteJust($id){
+        $this->db->query("DELETE FROM `justifications` WHERE id = $id");
+        $this->db->execute();
+    }
+
+    public function AjouterJust($data){
+        $justification = $data["justification"];
+        $this->db->query("INSERT INTO `justifications`(`justification`) VALUES ('$justification')");
+        $this->db->execute(); 
+    }
+
+    public function getJustById($id){
+        $this->db->query("SELECT * FROM `justifications` WHERE id = $id");
+        return $this->db->single();
+    }
+
+    public function updateJustById($id,$data){
+        $just = $data["justification"];
+        $this->db->query("UPDATE `justifications` SET `justification`='$just' WHERE id = $id");
+        $this->db->execute();
+    }
 }
