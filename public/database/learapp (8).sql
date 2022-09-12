@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 10, 2022 at 05:27 PM
+-- Generation Time: Sep 12, 2022 at 02:54 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -36,6 +36,25 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `justifications`
+--
+
+CREATE TABLE `justifications` (
+  `id` int(11) NOT NULL,
+  `justification` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `justifications`
+--
+
+INSERT INTO `justifications` (`id`, `justification`) VALUES
+(3, 'malade'),
+(4, 'gharad');
 
 -- --------------------------------------------------------
 
@@ -93,7 +112,7 @@ INSERT INTO `operateurs` (`id`, `nom`, `prenom`, `Matricule`, `Poste`, `Equipe`,
 (22, 'said', 'said', '12', '2', '3', 4, '2022-08-31', '19:11:42', 'code2', '', NULL),
 (23, 'hanane', 'hanane', '12', '2', '3', 3, '2022-09-08', '14:02:13', 'code3', '', NULL),
 (25, 'aziz', 'aziz', '23', '2', '3', 7, '2022-09-05', '00:35:01', 'code5', '', NULL),
-(26, 'samira', 'samira', '237777', '', '3', 6, '2022-09-09', '10:24:47', 'code6', 'malade', '2022-09-10'),
+(26, 'samira', 'samira', '237777', '', '3', 6, '2022-09-11', '00:47:23', 'code6', 'gharad', '2022-09-12'),
 (27, 'aiccha', 'aiccha', '23', '2', '3', 5, '2022-09-09', '10:25:10', 'code7', '', NULL);
 
 -- --------------------------------------------------------
@@ -150,8 +169,7 @@ CREATE TABLE `seniors` (
 
 INSERT INTO `seniors` (`id`, `nom`, `Matricule`, `Equipe`, `prenom`, `email`, `password`, `ROLE`) VALUES
 (1, 'sabir', '12377', '155', 'sabir', 'sabir@gmail.com', 'sabir123', ''),
-(2, 'wassim', '12', '2', 'wassim', 'wassim@gmail.com', 'wassim123', 'admin'),
-(3, 'zz', 'ddJJJ', 'zz', 'z', 'sabirkhaloufi@gmail.com', 'sabir123', '');
+(2, 'wassim', '12', '2', 'wassim', 'wassim@gmail.com', 'wassim123', 'admin');
 
 -- --------------------------------------------------------
 
@@ -183,7 +201,7 @@ CREATE TABLE `teamleaders` (
 
 INSERT INTO `teamleaders` (`id`, `nom`, `prenom`, `Matricule`, `Equipe`, `fk_senior`, `email`, `password`, `date`, `time`, `code`, `timeTeam`, `justification`, `date_just`, `Poste`) VALUES
 (1, 'aicha', 'aicha', 'A1234', '1', 2, 'aicha@gmail.com', 'aicha123', NULL, '00:00:00', 'aicha123', '00:00:00', '', NULL, 'DD'),
-(2, 'sara', 'sara', 'H345', '2', 1, 'sara@gmail.com', 'sara123', '2022-09-07', '03:18:22', 'sara123', '02:00:00', 'malade', '2022-09-10', '');
+(2, 'sara', 'sara', 'H345', '2', 1, 'sara@gmail.com', 'sara123', '2022-09-07', '03:18:22', 'sara123', '02:00:00', 'gharad', '2022-09-12', '');
 
 -- --------------------------------------------------------
 
@@ -237,6 +255,12 @@ INSERT INTO `zones` (`id`, `code`, `designation`, `fk_teamLeader`, `time`) VALUE
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `justifications`
+--
+ALTER TABLE `justifications`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `migrations`
@@ -301,6 +325,12 @@ ALTER TABLE `zones`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `justifications`
+--
+ALTER TABLE `justifications`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `migrations`
