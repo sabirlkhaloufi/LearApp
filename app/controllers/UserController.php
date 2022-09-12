@@ -39,7 +39,7 @@
                             redirect('pages/senior');
                         }
                         else{
-                            $_SESSION['idSenior'] = $data->id;
+                            $_SESSION['idAdmin'] = $data->id;
                             redirect('pages/admin');
                         }
                     }

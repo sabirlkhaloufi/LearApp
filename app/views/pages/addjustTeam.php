@@ -38,12 +38,17 @@
         <div class="card-body ">
         <form action="<?php echo URLROOT ?>/SeniorController/addJustification" method="POST">
             <div class="mb-3">
-                <select name="id" id="" class="form-control form-control-user w-100">
+                <select name="id" class="form-control form-control-user w-100">
                     <?php foreach ($data[1]["TeamLeaders"] as $op): ?>
                     <option value="<?php echo $op->id ?>"><?php echo $op->Matricule ?></option>
                     <?php endforeach; ?>
                 </select>
-                <textarea class="form-control form-control-user w-100 mt-2" name="justification" id="" cols="15" rows="4"></textarea>
+                <select name="justification" id="" class="form-control form-control-user w-100 mt-3">
+                    <?php foreach ($data[2]["just"] as $op): ?>
+                    <option value="<?php echo $op->justification ?>"><?php echo $op->justification ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <!-- <textarea class="form-control form-control-user w-100 mt-2" name="justification" id="" cols="15" rows="4"></textarea> -->
             <!-- <input class="form-control form-control-user w-100 mt-2" type="time" id="exampleInputPassword" placeholder="Entrer votre code" name="time"> -->
         </div>
             <button class="btn btn-danger d-block btn-user w-100" type="submit">add</button>
