@@ -59,6 +59,11 @@ public function getTeamById($id){
     return $this->db->single(); 
 }
 
+public function getAllOperateurs(){
+    $this->db->query("SELECT * From `operateurs`");
+    return $this->db->resultSet(); 
+}
+
 public function UpdateTeamById($data,$id){
     $email = $data["email"];
     $nom = $data["nom"];
@@ -179,4 +184,54 @@ public function getZoneById($id){
         $this->db->query("UPDATE `justifications` SET `justification`='$just' WHERE id = $id");
         $this->db->execute();
     }
+
+    public function getAllZones(){
+        $this->db->query("SELECT * FROM `zones`");
+        return $this->db->resultSet();  
+    }
+
+
+    public function deleteOp($id){
+        $this->db->query("DELETE FROM `operateurs` WHERE id = $id");
+        $this->db->execute(); 
+    }
+
+    public function getOpById($id){
+        $this->db->query("SELECT operateurs.*,zones.designation
+        FROM operateurs
+        INNER JOIN zones
+        ON operateurs.fk_zone = zones.id AND operateurs.id = $id;");
+        return $this->db->single(); 
+    }
+
+    public function updateOperateur($id,$data){
+        
+        $nom = $data["nom"];
+        $prenom = $data["prenom"];
+        $zone = $data["zone"];
+        $Equipe = $data["Equipe"];
+        $Poste = $data["Poste"];
+        $Matricule = $data["Matricule"];
+    
+        $this->db->query("UPDATE `operateurs` SET `nom`='$nom',`prenom`='$prenom',`Matricule`='$Matricule',`Poste`='$Poste',`Equipe`='$Equipe',`fk_zone`='$zone' WHERE id = $id");
+        $this->db->execute();
+    }
+
+
+
+
+    public function AjouterOp($data){
+        
+        $nom = $data["nom"];
+        $prenom = $data["prenom"];
+        $zone = $data["zone"];
+        $Equipe = $data["Equipe"];
+        $Poste = $data["Poste"];
+        $Matricule = $data["Matricule"];
+    
+        $this->db->query("INSERT INTO `operateurs`(`nom`, `prenom`, `Matricule`, `Poste`, `Equipe`, `fk_zone`) VALUES ('$nom','$prenom','$Matricule','$Poste','$Equipe','$zone')");
+        $this->db->execute();
+    }
+
+
 }

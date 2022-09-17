@@ -129,6 +129,39 @@
       $this->SeniorModel->updateJustById($id,$_POST);
       redirect("pages/justifications");
     }
+
+
+
+//------------------------------les operateurs----------------------------
+    public function updateOp($id){
+      $op = $this->SeniorModel->getOpById($id);
+      $zone = $this->SeniorModel->getAllZones();
+      $data = [
+        ["title" =>"updateOp"],
+         ["op" => $op],
+         ['zones' => $zone]
+      ];
+      
+      $this->view('pages/updateOp', $data); 
+    }
+
+    public function deleteOp($id){
+      $this->SeniorModel->deleteOp($id);
+      redirect("pages/operateursSenior");
+    }
+
+    public function updateOperateur($id){
+      $this->SeniorModel->updateOperateur($id,$_POST);
+      redirect("pages/operateursSenior");
+    }
+
+    public function AjouterOp(){
+      $this->SeniorModel->AjouterOp($_POST);
+      redirect("pages/operateursSenior");
+    }
+
+
+    //------------------------------les operateurs----------------------------
                 
     }
 

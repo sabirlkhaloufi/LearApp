@@ -35,7 +35,7 @@
 
     <div class="card shadow-sm p-3 mb-5 bg-body rounded w-50">
         <div class="card-body ">
-        <form action="<?php echo URLROOT ?>/TeamLeaderController/AjouterOp" method="POST">
+        <form action="<?php echo URLROOT ?>/SeniorController/AjouterOp" method="POST">
             <div class=" d-flex gap-3">
                 <div class="mb-3 w-100">
                     <label for="exampleInputEmail1" class="form-label">zone</label>

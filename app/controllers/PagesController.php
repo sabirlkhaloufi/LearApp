@@ -102,19 +102,7 @@
       
       $this->view('pages/operateurs', $data);  
     }
-
-    public function updateOp($id){
-      if(!isset($_SESSION['id'])){
-        redirect('pages/index');
-      }
-      echo $id;
-      $data = [
-        ["title" =>"updateOp"]
-      ];
-      
-      $this->view('pages/updateOp', $data); 
-    }
-
+    
     public function AjouterOp(){
       if(!isset($_SESSION['id'])){
         redirect('pages/index');
@@ -241,5 +229,15 @@
       ];
 
       $this->view('pages/admin/ajouterJust', $data);
+    }
+    
+    public function operateursSenior(){
+      $oper = $this->SeniorModel->getAllOperateurs();
+      $data = [
+        ["title" =>"operateursSenior"],
+        ["operateurs"=>$oper]
+      ];
+      
+      $this->view('pages/operateursSenior', $data);
     }
 }
