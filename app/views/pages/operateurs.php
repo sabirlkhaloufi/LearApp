@@ -28,7 +28,7 @@
     <main class="vw-100 vh-100">
         <div class="pt-4 d-flex justify-content-between px-5">
         <button id="export_button" class="btn btn-primary ">Imprimer</button>
-        <a href="<?php echo URLROOT ?>/pages/AjouterOp" class="btn btn-primary ">Ajouter</a>
+        <a href="<?php echo URLROOT ?>/pages/AjouterOp" class="btn btn-primary invisible-è">Ajouter</a>
         </div>
 
         <?php
@@ -68,8 +68,8 @@
                             <?php }?>
                         </td>
                         <td>
-                        <a href="<?php echo URLROOT ?>/TeamLeaderController/updateOp/<?php echo $oper->id ?>"><i class="fa fa-edit fs-4 text-bleu"></i></a>
-                        <a href="<?php echo URLROOT ?>/TeamLeaderController/deleteOp/<?php echo $oper->id ?>"><i class="fas fa-trash fs-4 text-bleu"></i></a>
+                        <!-- <a href="<?php echo URLROOT ?>/TeamLeaderController/updateOp/<?php echo $oper->id ?>"><i class="fa fa-edit fs-4 text-bleu"></i></a>
+                        <a href="<?php echo URLROOT ?>/TeamLeaderController/deleteOp/<?php echo $oper->id ?>"><i class="fas fa-trash fs-4 text-bleu"></i></a> -->
                         </td>
 
                     </tr>  

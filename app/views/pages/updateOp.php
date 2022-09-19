@@ -7,9 +7,11 @@
             </div>
             <div class="d-flex gap-2 align-items-center">
             
-            <a href="<?php echo URLROOT ?>/pages/addjust" class="btn btn-primary">Add Justification</a>
-            <a href="<?php echo URLROOT ?>/pages/updateTime" class="btn btn-primary">Update Time</a>
-            <a class="btn btn-primary" href="<?php echo URLROOT ?>/pages/operateurs">Operateurs</a>
+            <a href="<?php echo URLROOT ?>/pages/addjustTeam" class="btn btn-primary">Add Justification</a>
+            <a href="<?php echo URLROOT ?>/pages/updateTimeSenior" class="btn btn-primary">Update Time</a>
+            <a class="btn btn-primary" href="<?php echo URLROOT ?>/pages/TeamLeaders">TeamLeaders</a>
+            <a class="btn btn-primary" href="<?php echo URLROOT ?>/pages/operateursSenior">Operateurs</a>
+            <a class="btn btn-primary" href="<?php echo URLROOT ?>/pages/zones">zones</a>
             <p class="text-center mt-3"><?php echo $_SESSION['nom']." ".$_SESSION['prenom'] ?></p>
             <div class="dropdown">
                 <div class="dropdown-toggle d-flex gap-2 align-items-center" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -27,15 +29,15 @@
 
     <main class=" vw-100">
     <div class="d-flex flex-column flex-lg-row justify-content-center gap-5 align-items-center pt-5">
-        <a href="<?php echo URLROOT ?>/pages/teamLeader" class="btn btn-primary">Retour</a>
-        <h3 class="text-center">TeamLeader: <?php echo $_SESSION['nom']." ".$_SESSION['prenom'] ?></h3>
+        <a href="<?php echo URLROOT ?>/pages/operateursSenior" class="btn btn-primary">Retour</a>
+        <h3 class="text-center">Modifier Operateur</h3>
     </div>
     <div class="d-flex gap-2 flex-wrap mt-5 justify-content-center align-items-center">
 
 
     <div class="card shadow-sm p-3 mb-5 bg-body rounded w-50">
         <div class="card-body ">
-        <form action="<?php echo URLROOT ?>/TeamLeaderController/updateOperateur/<?php echo $data[1]["op"]->id ?>" method="POST">
+        <form action="<?php echo URLROOT ?>/SeniorController/updateOperateur/<?php echo $data[1]["op"]->id ?>" method="POST">
             <div class=" d-flex gap-3">
                 <div class="mb-3 w-100">
                     <label for="exampleInputEmail1" class="form-label">zone</label>
@@ -78,7 +80,7 @@
                 </div>
             </div>
 
-            <button class="btn btn-danger d-block btn-user w-100" type="submit">update</button>
+            <button class="btn btn-danger d-block btn-user w-100" type="submit">Enregistrer</button>
         </form>
         </div>
     </div>

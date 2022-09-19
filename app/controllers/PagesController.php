@@ -102,24 +102,12 @@
       
       $this->view('pages/operateurs', $data);  
     }
-
-    public function updateOp($id){
-      if(!isset($_SESSION['id'])){
-        redirect('pages/index');
-      }
-      echo $id;
-      $data = [
-        ["title" =>"updateOp"]
-      ];
-      
-      $this->view('pages/updateOp', $data); 
-    }
-
+    
     public function AjouterOp(){
-      if(!isset($_SESSION['id'])){
+      if(!isset($_SESSION['idSenior'])){
         redirect('pages/index');
       }
-      $zone = $this->TeamL->getZone($_SESSION['id']);
+      $zone = $this->SeniorModel->getAllZones();
       $data = [
         ["title" =>"AjouterOp"],
         ["zones" => $zone]
@@ -241,5 +229,15 @@
       ];
 
       $this->view('pages/admin/ajouterJust', $data);
+    }
+    
+    public function operateursSenior(){
+      $oper = $this->SeniorModel->getAllOperateurs();
+      $data = [
+        ["title" =>"operateursSenior"],
+        ["operateurs"=>$oper]
+      ];
+      
+      $this->view('pages/operateursSenior', $data);
     }
 }
