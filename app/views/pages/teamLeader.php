@@ -60,18 +60,26 @@
                 <?php if($team->designation == $zone->designation){ ?>
                     <?php if($team->date == $date){ ?>
 
-                        <?php if($team->time > $zone->time){ ?>
+                        <?php if($team->time > "06:15:00" && $team->time < "13:45:00" || $team->time > "14:15:00" && $team->time < "21:45:00" || $team->time > "22:15:00" && $team->time < "05:45:00"){ ?>
+
                             <li class="btn btn-warning py-2 px-3 text-white"><?php echo $team->Matricule ?></li>
+
                         <?php }else{?>
                             <?php if($team->Poste == null){ ?>
+
                                 <li class="btn btn-secondary py-2 px-3 text-white"><?php echo $team->Matricule ?></li>
+
                             <?php }else{ ?>
-                            
+
                                 <li class="btn btn-success py-2 px-3 text-white"><?php echo $team->Matricule ?></li>
+
                             <?php } ?>
                         <?php } ?>
                         
-                    <?php }else{ ?>
+                    <?php }
+                    
+                    
+                    else{ ?>
                         <?php if($team->date_jus == $date){ ?>
                             <li class="btn btn-danger py-2 px-3 text-white" data-bs-toggle="modal" data-bs-target="#Modal<?php echo $team->id ?>"><?php echo $team->Matricule ?></li>
                             

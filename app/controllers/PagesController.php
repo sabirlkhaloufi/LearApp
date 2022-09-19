@@ -104,10 +104,10 @@
     }
     
     public function AjouterOp(){
-      if(!isset($_SESSION['id'])){
+      if(!isset($_SESSION['idSenior'])){
         redirect('pages/index');
       }
-      $zone = $this->TeamL->getZone($_SESSION['id']);
+      $zone = $this->SeniorModel->getAllZones();
       $data = [
         ["title" =>"AjouterOp"],
         ["zones" => $zone]
