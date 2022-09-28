@@ -108,9 +108,12 @@
         redirect('pages/index');
       }
       $zone = $this->SeniorModel->getAllZones();
+      $postes = $this->TeamL->getPostes();
+      
       $data = [
         ["title" =>"AjouterOp"],
-        ["zones" => $zone]
+        ["zones" => $zone],
+        ["postes" => $postes]
 
       ];
       
@@ -239,5 +242,15 @@
       ];
       
       $this->view('pages/operateursSenior', $data);
+    }
+
+    public function permuter(){
+      $oper = $this->TeamL->getOpWithZone($_SESSION['id']);
+      $data = [
+        ["title" =>"permuter"],
+        ["operateurs"=>$oper]
+      ];
+      
+      $this->view('pages/permuter', $data);
     }
 }

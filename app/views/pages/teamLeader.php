@@ -60,7 +60,9 @@
                 <?php if($team->designation == $zone->designation){ ?>
                     <?php if($team->date == $date){ ?>
 
-                        <?php if($team->time > "06:15:00" && $team->time < "13:45:00" || $team->time > "14:15:00" && $team->time < "21:45:00" || $team->time > "22:15:00" && $team->time < "05:45:00"){ ?>
+                        <?php if($team->time > "06:15:00" && $team->time < "13:45:00"
+                        || $team->time > "14:15:00" && $team->time < "21:45:00"
+                        || $team->time > "22:15:00" && $team->time < "05:45:00"){ ?>
 
                             <li class="btn btn-warning py-2 px-3 text-white"><?php echo $team->Matricule ?></li>
 

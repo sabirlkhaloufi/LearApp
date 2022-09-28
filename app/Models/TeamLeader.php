@@ -18,10 +18,11 @@ class TeamLeader
 
 
     public function getOpWithZone($idteam){
-        $this->db->query("SELECT operateurs.*,zones.designation
+        $this->db->query("SELECT operateurs.*,zones.designation,postes.Poste
         FROM operateurs
         INNER JOIN zones
-        ON operateurs.fk_zone = zones.id AND zones.fk_teamLeader = $idteam;");
+        INNER JOIN postes
+        ON operateurs.fk_zone = zones.id AND postes.fk_oper = operateurs.id AND zones.fk_teamLeader = $idteam OR postes.fk_oper = NULL;");
         return $this->db->resultSet();  
     }
 
@@ -54,7 +55,29 @@ class TeamLeader
         $this->db->execute();
     }
 
+    public function getPostes(){
+        $this->db->query("SELECT * FROM `postes` WHERE fk_oper IS NULL");
+        return $this->db->resultSet();   
+    }
 
-    
+    public function ecraserPoste($id,$data){
+        $idPoste = $data["id"];
+        echo $idPoste;
+        echo $id;
+        $this->db->query("UPDATE `postes` SET `fk_oper` = NULL WHERE fk_oper = $id");
+        $this->db->execute();
 
+        $this->db->query("UPDATE `postes` SET `fk_oper` = $id WHERE id_poste = $idPoste");
+        $this->db->execute();
+    }
+
+
+    public function permuterOper($oper1,$oper2){
+
+        $this->db->query("UPDATE `postes` SET `fk_oper` = $oper2[0] WHERE fk_oper = $oper1[0]");
+        $this->db->execute();
+
+        $this->db->query("UPDATE `postes` SET `fk_oper` = $oper1[0] WHERE Poste = '$oper2[1]'");
+        $this->db->execute();
+    }
 }
