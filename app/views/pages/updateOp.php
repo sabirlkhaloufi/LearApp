@@ -65,8 +65,15 @@
 
                 <div class="mb-3 w-100">
                     <label for="exampleInputEmail1" class="form-label">poste</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" value="<?php echo $data[1]["op"]->Poste ?>" name="Poste">          
-                </div>
+                    <select name="idPoste" class="form-control form-control-user w-100">
+                    <?php foreach ($data[3]["postes"] as $op): ?>
+                        <!-- <?php  var_dump($op->fk_oper) ?> -->
+                        <?php if($op->fk_oper === $data[1]["op"]->id ): ?>
+                            <option  value="<?php echo $op->id_poste ?>" selected><?php echo $op->Poste ?></option>
+                        <?php endif; ?>
+                    <option value="<?php echo $op->id_poste ?>"><?php echo $op->Poste ?></option>
+                    <?php endforeach; ?>
+                </select>                </div>
             </div>
             <div class=" d-flex gap-3">
                 <div class="mb-3 w-100">

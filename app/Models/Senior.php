@@ -17,10 +17,11 @@ public function getTeamLeader($idSenior){
 
 
 public function getOpWithZone(){
-    $this->db->query("SELECT operateurs.*,zones.designation
+    $this->db->query("SELECT operateurs.*,zones.designation,postes.Poste
     FROM operateurs
     INNER JOIN zones
-    ON operateurs.fk_zone = zones.id;");
+    INNER JOIN postes
+    ON operateurs.fk_zone = zones.id AND postes.fk_oper = operateurs.id OR postes.fk_oper = NULL;");
     return $this->db->resultSet();
 }
 
@@ -60,7 +61,11 @@ public function getTeamById($id){
 }
 
 public function getAllOperateurs(){
-    $this->db->query("SELECT * From `operateurs`");
+    $this->db->query("SELECT operateurs.*,zones.designation,postes.Poste
+    FROM operateurs
+    INNER JOIN zones
+    INNER JOIN postes
+    ON operateurs.fk_zone = zones.id AND postes.fk_oper = operateurs.id OR postes.fk_oper = NULL;");
     return $this->db->resultSet(); 
 }
 
@@ -193,14 +198,15 @@ public function getZoneById($id){
 
     public function deleteOp($id){
         $this->db->query("DELETE FROM `operateurs` WHERE id = $id");
-        $this->db->execute(); 
+        $this->db->execute();
     }
 
     public function getOpById($id){
-        $this->db->query("SELECT operateurs.*,zones.designation
+        $this->db->query("SELECT operateurs.*,zones.designation,postes.Poste
         FROM operateurs
         INNER JOIN zones
-        ON operateurs.fk_zone = zones.id AND operateurs.id = $id;");
+        INNER JOIN postes
+        ON operateurs.fk_zone = zones.id AND postes.fk_oper = operateurs.id OR postes.fk_oper = NULL AND operateurs.id = $id;");
         return $this->db->single(); 
     }
 
@@ -210,11 +216,19 @@ public function getZoneById($id){
         $prenom = $data["prenom"];
         $zone = $data["zone"];
         $Equipe = $data["Equipe"];
-        $Poste = $data["Poste"];
+        $Poste = $data["idPoste"];
         $Matricule = $data["Matricule"];
     
-        $this->db->query("UPDATE `operateurs` SET `nom`='$nom',`prenom`='$prenom',`Matricule`='$Matricule',`Poste`='$Poste',`Equipe`='$Equipe',`fk_zone`='$zone' WHERE id = $id");
+        $this->db->query("UPDATE `operateurs` SET `nom`='$nom',`prenom`='$prenom',`Matricule`='$Matricule',`Equipe`='$Equipe',`fk_zone`='$zone' WHERE id = $id");
         $this->db->execute();
+
+        $this->db->query("SELECT `id` FROM `operateurs` WHERE `Matricule` = '$Matricule' ");
+        $data = $this->db->single();
+
+        $this->db->query("UPDATE `postes` SET `fk_oper` = $data->id WHERE id_poste = $Poste");
+        $this->db->execute();
+
+
     }
 
 
@@ -226,10 +240,17 @@ public function getZoneById($id){
         $prenom = $data["prenom"];
         $zone = $data["zone"];
         $Equipe = $data["Equipe"];
-        $Poste = $data["Poste"];
+        $Poste = $data["idPoste"];
         $Matricule = $data["Matricule"];
     
-        $this->db->query("INSERT INTO `operateurs`(`nom`, `prenom`, `Matricule`, `Poste`, `Equipe`, `fk_zone`) VALUES ('$nom','$prenom','$Matricule','$Poste','$Equipe','$zone')");
+        $this->db->query("INSERT INTO `operateurs`(`nom`, `prenom`, `Matricule`,`Equipe`, `fk_zone`) VALUES ('$nom','$prenom','$Matricule','$Equipe','$zone')");
+        $this->db->execute();
+
+        $this->db->query("SELECT `id` FROM `operateurs` WHERE `Matricule` = '$Matricule' ");
+        $data = $this->db->single();
+        var_dump($data);
+
+        $this->db->query("UPDATE `postes` SET `fk_oper` = $data->id WHERE id_poste = $Poste");
         $this->db->execute();
     }
 

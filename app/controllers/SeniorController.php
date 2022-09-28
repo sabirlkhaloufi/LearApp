@@ -3,6 +3,7 @@
 
         public function __construct()
         {
+          $this->TeamL = $this->model('teamLeader');
             $this->SeniorModel = $this->model('Senior');
         }
 
@@ -136,10 +137,12 @@
     public function updateOp($id){
       $op = $this->SeniorModel->getOpById($id);
       $zone = $this->SeniorModel->getAllZones();
+      $postes = $this->TeamL->getPostes();
       $data = [
         ["title" =>"updateOp"],
          ["op" => $op],
-         ['zones' => $zone]
+         ['zones' => $zone],
+         ['postes' =>$postes]
       ];
       
       $this->view('pages/updateOp', $data); 

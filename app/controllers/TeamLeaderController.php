@@ -78,7 +78,39 @@
             redirect("pages/addJust");
           }
 
-                
+          public function ecraser($id){
+            $postes = $this->TeamL->getPostes();
+            $data = [
+              ["title" =>"ecraser"],
+               ["postes" => $postes],
+               ["id" => $id]
+            ];
+            $this->view('pages/ecraser', $data);
+          }
+
+          public function ecraserPoste($id){
+            $this->TeamL->ecraserPoste($id,$_POST);
+            redirect("pages/operateurs");
+          }
+
+          // public function permuter($id){
+          //   $postes = $this->TeamL->getPostes();
+          //   $data = [
+          //     ["title" =>"ecraser"],
+          //      ["postes" => $postes],
+          //      ["id" => $id]
+          //   ];
+          //   $this->view('pages/ecraser', $data);
+          // }
+
+          public function permuterOper(){
+            $oper1 = explode(",",$_POST["oper1"]);
+            $oper2 = explode(",", $_POST["oper2"]);
+
+            $this->TeamL->permuterOper($oper1,$oper2);
+            redirect("pages/operateurs");
+          }
+
     }
 
 ?>

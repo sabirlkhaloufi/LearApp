@@ -28,7 +28,12 @@
     <main class="vw-100 vh-100">
         <div class="pt-4 d-flex justify-content-between px-5">
         <button id="export_button" class="btn btn-primary ">Imprimer</button>
-        <a href="<?php echo URLROOT ?>/pages/AjouterOp" class="btn btn-primary invisible-è">Ajouter</a>
+        <div>
+        <a href="<?php echo URLROOT ?>/pages/permuter" class="btn btn-primary invisible-è">permuter</a>
+        <!-- <a href="<?php echo URLROOT ?>/pages/AjouterOp" class="btn btn-primary invisible-è">Ajouter</a> -->
+        
+
+        </div>
         </div>
 
         <?php
@@ -60,16 +65,78 @@
                         <td><?php echo  $oper->prenom ?></td>
                         <td><?php echo  $oper->Poste ?></td>
                         <td><?php echo  $oper->Matricule ?></td>
+                        <td><a href="<?php echo URLROOT?>/TeamLeaderController/ecraser/<?php echo $oper->id ?>" class="btn btn-success btn-sm">Ecraser</a></td>
                         <td>
-                            <?php if($oper->date == $date){ ?>
-                                <span class="btn btn-success text-white btn-sm">Present</span>
-                            <?php }else{ ?>
-                                <span class="btn btn-danger text-white btn-sm">Absence</span>
-                            <?php }?>
+                        <?php if($oper->date == $date){ ?>
+
+<?php if($oper->time > "06:15:00" && $oper->time < "13:45:00"
+|| $oper->time > "14:15:00" && $oper->time < "21:45:00"
+|| $oper->time > "22:15:00" && $oper->time < "05:45:00"){ ?>
+
+    <li class="btn btn-warning py-2 px-3 text-white">Retard</li>
+
+<?php }else{?>
+    <?php if($oper->Poste == null){ ?>
+
+        <li class="btn btn-secondary py-2 px-3 text-white">sans poste</li>
+
+    <?php }else{ ?>
+
+        <li class="btn btn-success py-2 px-3 text-white">present</li>
+
+    <?php } ?>
+<?php } ?>
+
+<?php }
+
+
+else{ ?>
+<?php if($oper->date_jus == $date){ ?>
+    <li class="btn btn-danger py-2 px-3 text-white" data-bs-toggle="modal" data-bs-target="#Modal<?php echo $oper->id ?>">Absent</li>
+    
+    <div class="modal fade mt-7" id="Modal<?php echo $oper->id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Justification</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-dark h5">
+            <?php echo $oper->justification ?>
+            <p class="mt-2">Poste : <?php echo $oper->Poste ?></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<?php }else{ ?>
+    <li class="btn btn-danger py-2 px-3 text-white" data-bs-toggle="modal" data-bs-target="#Modal<?php echo $oper->id ?>">Absent</li>
+    
+    <div class="modal fade mt-7" id="Modal<?php echo $oper->id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Justification</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-dark h5">
+            Non justifier
+            <p class="mt-2">Poste : <?php echo $oper->Poste ?></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<?php } ?>
+<?php } ?> 
                         </td>
                         <td>
-                        <!-- <a href="<?php echo URLROOT ?>/TeamLeaderController/updateOp/<?php echo $oper->id ?>"><i class="fa fa-edit fs-4 text-bleu"></i></a>
-                        <a href="<?php echo URLROOT ?>/TeamLeaderController/deleteOp/<?php echo $oper->id ?>"><i class="fas fa-trash fs-4 text-bleu"></i></a> -->
+                        <!-- <a href="<?php echo URLROOT ?>/op$operLeaderController/updateOp/<?php echo $oper->id ?>"><i class="fa fa-edit fs-4 text-bleu"></i></a>
+                        <a href="<?php echo URLROOT ?>/op$operLeaderController/deleteOp/<?php echo $oper->id ?>"><i class="fas fa-trash fs-4 text-bleu"></i></a> -->
                         </td>
 
                     </tr>  
