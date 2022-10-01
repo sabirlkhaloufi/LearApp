@@ -8,7 +8,6 @@
             <div class="d-flex gap-2 align-items-center">
             
             <a href="<?php echo URLROOT ?>/pages/addjust" class="btn btn-primary">Add Justification</a>
-            <a href="<?php echo URLROOT ?>/pages/updateTime" class="btn btn-primary">Update Time</a>
             <a class="btn btn-primary" href="<?php echo URLROOT ?>/pages/operateurs">Operateurs</a>
             <p class="text-center mt-3"><?php echo $_SESSION['nom']." ".$_SESSION['prenom'] ?></p>
             <div class="dropdown">
