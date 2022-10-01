@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 28, 2022 at 01:17 AM
+-- Generation Time: Oct 01, 2022 at 08:34 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -108,11 +108,10 @@ CREATE TABLE `operateurs` (
 
 INSERT INTO `operateurs` (`id`, `nom`, `prenom`, `Matricule`, `Equipe`, `fk_zone`, `date`, `time`, `code`, `justification`, `date_jus`) VALUES
 (20, 'sabir', 'sabir', '123', '1', 3, '2022-08-30', '15:05:06', 'code1', '', NULL),
-(22, 'said', 'said', '12', '3', 4, '2022-08-31', '19:11:42', 'code2', '', NULL),
 (23, 'hanane', 'hanane', '12', '3', 3, '2022-09-08', '14:02:13', 'code3', '', NULL),
-(25, 'aziz', 'aziz', '23', '3', 7, '2022-09-05', '00:35:01', 'code5', '', NULL),
-(26, 'samira', 'samira', '237777', '3', 6, '2022-09-11', '00:47:23', 'code6', 'gharad', '2022-09-12'),
-(27, 'aiccha', 'aiccha', '23', '3', 5, '2022-09-09', '10:25:10', 'code7', '', NULL);
+(40, 'wassim', 'wassim', '237777', 'ff', 5, NULL, '00:00:00', '', '', NULL),
+(41, 'ahmed', 'ahmex', '65', 'Y', 4, NULL, '00:00:00', '', '', NULL),
+(42, 'nouhayla', 'nouhayla', 'nouha13', '4', 6, NULL, '00:00:00', '', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -154,7 +153,7 @@ CREATE TABLE `personal_access_tokens` (
 CREATE TABLE `postes` (
   `id_poste` bigint(20) UNSIGNED NOT NULL,
   `Poste` varchar(100) NOT NULL,
-  `fk_oper` bigint(20) UNSIGNED DEFAULT 1
+  `fk_oper` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -164,10 +163,10 @@ CREATE TABLE `postes` (
 INSERT INTO `postes` (`id_poste`, `Poste`, `fk_oper`) VALUES
 (5, 'poste1', NULL),
 (6, 'poste2', 20),
-(12, 'poste3', 26),
-(17, 'poste4', NULL),
-(18, 'poste5', NULL),
-(19, 'poste6', 27);
+(12, 'poste3', 40),
+(17, 'poste4', 23),
+(26, 'poste6', 41),
+(27, 'poste5', 42);
 
 -- --------------------------------------------------------
 
@@ -317,7 +316,7 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `postes`
   ADD PRIMARY KEY (`id_poste`),
-  ADD KEY `fk_oper` (`fk_oper`);
+  ADD KEY `postes_ibfk_1` (`fk_oper`);
 
 --
 -- Indexes for table `seniors`
@@ -372,7 +371,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `operateurs`
 --
 ALTER TABLE `operateurs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -384,7 +383,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `postes`
 --
 ALTER TABLE `postes`
-  MODIFY `id_poste` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_poste` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `seniors`
@@ -424,7 +423,7 @@ ALTER TABLE `operateurs`
 -- Constraints for table `postes`
 --
 ALTER TABLE `postes`
-  ADD CONSTRAINT `postes_ibfk_1` FOREIGN KEY (`fk_oper`) REFERENCES `operateurs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `postes_ibfk_1` FOREIGN KEY (`fk_oper`) REFERENCES `operateurs` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
 -- Constraints for table `teamleaders`
