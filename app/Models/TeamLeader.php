@@ -56,7 +56,7 @@ class TeamLeader
     }
 
     public function getPostes(){
-        $this->db->query("SELECT * FROM `postes` WHERE fk_oper IS NULL");
+        $this->db->query("SELECT * FROM `postes` WHERE fk_oper");
         return $this->db->resultSet();   
     }
 

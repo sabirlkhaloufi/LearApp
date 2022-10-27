@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2022 at 08:34 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- Generation Time: Oct 28, 2022 at 12:48 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -111,7 +111,7 @@ INSERT INTO `operateurs` (`id`, `nom`, `prenom`, `Matricule`, `Equipe`, `fk_zone
 (23, 'hanane', 'hanane', '12', '3', 3, '2022-09-08', '14:02:13', 'code3', '', NULL),
 (40, 'wassim', 'wassim', '237777', 'ff', 5, NULL, '00:00:00', '', '', NULL),
 (41, 'ahmed', 'ahmex', '65', 'Y', 4, NULL, '00:00:00', '', '', NULL),
-(42, 'nouhayla', 'nouhayla', 'nouha13', '4', 6, NULL, '00:00:00', '', '', NULL);
+(42, 'nouhayla', 'nouhayla', 'nouha13', '4', 6, '2022-10-28', '00:47:53', 'code6', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -153,20 +153,19 @@ CREATE TABLE `personal_access_tokens` (
 CREATE TABLE `postes` (
   `id_poste` bigint(20) UNSIGNED NOT NULL,
   `Poste` varchar(100) NOT NULL,
-  `fk_oper` bigint(20) UNSIGNED DEFAULT NULL
+  `fk_oper` bigint(20) UNSIGNED DEFAULT NULL,
+  `date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `postes`
 --
 
-INSERT INTO `postes` (`id_poste`, `Poste`, `fk_oper`) VALUES
-(5, 'poste1', NULL),
-(6, 'poste2', 20),
-(12, 'poste3', 40),
-(17, 'poste4', 23),
-(26, 'poste6', 41),
-(27, 'poste5', 42);
+INSERT INTO `postes` (`id_poste`, `Poste`, `fk_oper`, `date`) VALUES
+(12, 'poste3', NULL, '2022-10-28'),
+(17, 'poste4', 40, NULL),
+(26, 'poste6', 41, NULL),
+(27, 'poste5', 42, '2022-10-28');
 
 -- --------------------------------------------------------
 
@@ -383,7 +382,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `postes`
 --
 ALTER TABLE `postes`
-  MODIFY `id_poste` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_poste` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `seniors`

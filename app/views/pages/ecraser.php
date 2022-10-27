@@ -32,13 +32,23 @@
     <div class="d-flex gap-2 flex-wrap mt-5 justify-content-center align-items-center">
 
 
+    <?php
+                $dateTime =  date("Y-m-d H:i:s");
+                $dateTime = explode(" ", $dateTime);
+                $date = $dateTime[0];
+                $time = $dateTime[1];
+            ?>
+
     <div class="card shadow-sm p-3 mb-5 bg-body rounded w-50">
         <div class="card-body ">
         <form action="<?php echo URLROOT ?>/TeamLeaderController/ecraserPoste/<?php echo $data[2]["id"];?>" method="POST">
             <div class="mb-3">
                 <select name="id" class="form-control form-control-user w-100">
                     <?php foreach ($data[1]["postes"] as $op): ?>
+                    <?php if($op->date != $date){ ?>
                     <option value="<?php echo $op->id_poste ?>"><?php echo $op->Poste ?></option>
+
+                    <?php }?>
                     <?php endforeach; ?>
                 </select>
                 <!-- <textarea class="form-control form-control-user w-100 mt-2" name="justification" id="" cols="15" rows="4"></textarea> -->
