@@ -26,6 +26,13 @@
         </div>
     </header>
 
+    <?php
+                $dateTime =  date("Y-m-d H:i:s");
+                $dateTime = explode(" ", $dateTime);
+                $date = $dateTime[0];
+                $time = $dateTime[1];
+            ?>
+
     <main class=" vw-100">
     <div class="d-flex flex-column flex-lg-row justify-content-center gap-5 align-items-center pt-5">
         <a href="<?php echo URLROOT ?>/pages/Senior" class="btn btn-primary">Retour</a>
@@ -40,7 +47,9 @@
             <div class="mb-3">
                 <select name="id" class="form-control form-control-user w-100">
                     <?php foreach ($data[1]["TeamLeaders"] as $op): ?>
+                        <?php if($op->date != $date){?>
                     <option value="<?php echo $op->id ?>"><?php echo $op->Matricule ?></option>
+                    <?php } ?>
                     <?php endforeach; ?>
                 </select>
                 <select name="justification" id="" class="form-control form-control-user w-100 mt-3">
