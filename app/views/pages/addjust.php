@@ -43,7 +43,6 @@
         <form action="<?php echo URLROOT ?>/TeamLeaderController/addJustification" method="POST">
             <div class="mb-3">
                 <select name="id" id="" class="form-control form-control-user w-100">
-                    <?php array_unique($data[1]["operateurs"]); ?>
                     <?php foreach ($data[1]["operateurs"] as $op): ?>
                         <?php if($op->date != $date){?>
                     <option value="<?php echo $op->id ?>"><?php echo $op->Matricule ?></option>

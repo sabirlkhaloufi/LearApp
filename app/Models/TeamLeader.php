@@ -56,12 +56,12 @@ class TeamLeader
     }
 
     public function getPostes(){
-        // $idteam = $_SESSION['idAdmin'];
-        $this->db->query("SELECT postes.*
+        $idteam = $_SESSION['id'];
+        $this->db->query("SELECT DISTINCT postes.*
         FROM postes
         INNER JOIN operateurs
         INNER JOIN zones
-        ON postes.fk_oper = operateurs.id AND zones.fk_teamLeader = 2");
+        ON postes.fk_oper = operateurs.id AND zones.fk_teamLeader = $idteam");
         return $this->db->resultSet();   
     }
 

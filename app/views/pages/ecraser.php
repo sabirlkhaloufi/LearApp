@@ -49,7 +49,9 @@
                     <option value="<?php echo $op->id_poste ?>"><?php echo $op->Poste ?></option>
 
                     <?php }?>
-                    <?php endforeach; ?>
+                    <?php endforeach;
+                    
+                    ?>
                 </select>
                 <!-- <textarea class="form-control form-control-user w-100 mt-2" name="justification" id="" cols="15" rows="4"></textarea> -->
             <!-- <input class="form-control form-control-user w-100 mt-2" type="time" id="exampleInputPassword" placeholder="Entrer votre code" name="time"> -->
