@@ -56,7 +56,12 @@ class TeamLeader
     }
 
     public function getPostes(){
-        $this->db->query("SELECT * FROM `postes` WHERE fk_oper");
+        // $idteam = $_SESSION['idAdmin'];
+        $this->db->query("SELECT postes.*
+        FROM postes
+        INNER JOIN operateurs
+        INNER JOIN zones
+        ON postes.fk_oper = operateurs.id AND zones.fk_teamLeader = 2");
         return $this->db->resultSet();   
     }
 
