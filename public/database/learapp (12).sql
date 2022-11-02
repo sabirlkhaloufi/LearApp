@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2022 at 12:48 AM
+-- Generation Time: Nov 02, 2022 at 01:29 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -109,9 +109,9 @@ CREATE TABLE `operateurs` (
 INSERT INTO `operateurs` (`id`, `nom`, `prenom`, `Matricule`, `Equipe`, `fk_zone`, `date`, `time`, `code`, `justification`, `date_jus`) VALUES
 (20, 'sabir', 'sabir', '123', '1', 3, '2022-08-30', '15:05:06', 'code1', '', NULL),
 (23, 'hanane', 'hanane', '12', '3', 3, '2022-09-08', '14:02:13', 'code3', '', NULL),
-(40, 'wassim', 'wassim', '237777', 'ff', 5, NULL, '00:00:00', '', '', NULL),
+(40, 'wassim', 'wassim', '237777', 'ff', 5, NULL, '00:00:00', '', 'malade', '2022-11-01'),
 (41, 'ahmed', 'ahmex', '65', 'Y', 4, NULL, '00:00:00', '', '', NULL),
-(42, 'nouhayla', 'nouhayla', 'nouha13', '4', 6, '2022-10-28', '00:47:53', 'code6', '', NULL);
+(42, 'nouhayla', 'nouhayla', 'nouha13', '4', 6, '2022-11-01', '08:44:26', 'code6', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -164,8 +164,8 @@ CREATE TABLE `postes` (
 INSERT INTO `postes` (`id_poste`, `Poste`, `fk_oper`, `date`) VALUES
 (12, 'poste3', NULL, '2022-10-28'),
 (17, 'poste4', 40, NULL),
-(26, 'poste6', 41, NULL),
-(27, 'poste5', 42, '2022-10-28');
+(26, 'poste6', 42, '2022-11-01'),
+(27, 'poste5', NULL, '2022-10-28');
 
 -- --------------------------------------------------------
 

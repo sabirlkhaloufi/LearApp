@@ -126,10 +126,6 @@
       }
       $oper = $this->TeamL->getOpWithZone($_SESSION['id']);
       $just = $this->SeniorModel->getAllJust();
-
-      var_dump($oper);
-      var_dump($just);
-
       $data = [
         ["title" =>"addjust"],
         ["operateurs" => $oper],
